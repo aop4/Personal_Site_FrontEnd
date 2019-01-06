@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import './news.css';
 import axios from 'axios';
 import dateFormat from 'dateformat';
-import renderHTML from 'react-render-html'
+import renderHTML from 'react-render-html';
+import { BASE_URL } from '../../constants';
 
 export default class News extends Component {
     
     retrieveNewsItems() {
-        axios.get('https://andrewpuglionesi-api.herokuapp.com/news_items')
+        axios.get(BASE_URL + '/news_items')
         .then((resp) => {
             let newsItems = resp.data;
             newsItems.forEach((item) => {

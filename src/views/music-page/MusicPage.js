@@ -3,11 +3,24 @@ import MusicPlayerInterface from './MusicPlayerInterface';
 import axios from 'axios';
 import SongSelector from './SongSelector';
 import './music-page.css';
+import { BASE_URL } from '../../constants';
 
 export default class MusicPage extends Component {
 
+    constructor(props) {
+        super(props);
+        this.musicPlayer = React.createRef();
+        this.state = {
+            albums: {},
+            currentAlbum: {songs: []},
+            currentSong: {},
+            currentSongIndex: 0
+        };
+        this.getAlbums();
+    }
+
     getAlbums() {
-        axios.get('https://andrewpuglionesi-api.herokuapp.com/albums')
+        axios.get(BASE_URL + '/albums')
         .then((resp) => {
             // set the current album to the first album and the current song
             // to the first song
@@ -20,16 +33,12 @@ export default class MusicPage extends Component {
         });
     }
 
-    constructor(props) {
-        super(props);
-        this.musicPlayer = React.createRef();
-        this.state = {
-            albums: {},
-            currentAlbum: {songs: []},
-            currentSong: {},
-            currentSongIndex: 0
-        };
-        this.getAlbums();
+    /* Updates the play count of `song` in the database */
+    updatePlayCount(song, album) {
+        axios.patch(BASE_URL + '/albums/' + album.id + '/songs/' + song.id)
+        .then(() => {}, (err) => {
+            console.log(err);
+        });
     }
 
     /* Returns true if index is not a valid index for this.currentAlbum.songs
@@ -47,6 +56,7 @@ export default class MusicPage extends Component {
         }
         let song = this.state.currentAlbum.songs[index];
         this.musicPlayer.current.playNew(song);
+        this.updatePlayCount(song, this.state.currentAlbum);
         this.setState({
             currentSongIndex: index,
             currentSong: song

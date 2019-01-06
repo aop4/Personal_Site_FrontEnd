@@ -3,6 +3,7 @@ import Slider from 'rc-slider/lib/Slider';
 import 'rc-slider/assets/index.css';
 import './music-player-interface.css';
 import ReactPlayer from 'react-player';
+import { BASE_URL } from '../../constants';
 
 export default class MusicPlayerInterface extends Component {
 
@@ -12,7 +13,6 @@ export default class MusicPlayerInterface extends Component {
         this.state = {
             playing: false,
             songUrl: null,
-            currSongDuration: '',
             fractionPlayed: 0 // the fraction of the current song that's been
                                 // played (in range [0, 1])
         };
@@ -21,8 +21,7 @@ export default class MusicPlayerInterface extends Component {
     }
 
     playNew(song) {
-        this.setURL('https://andrewpuglionesi-api.herokuapp.com' + 
-            song.file_path);
+        this.setURL(BASE_URL + song.file_path);
         this.resume();
     }
 
@@ -59,22 +58,6 @@ export default class MusicPlayerInterface extends Component {
             playing: false
         });
     }
-
-    setCurrSongDuration() {
-        let padNumber = (n) => {
-            let str = n.toString();
-            if (str.length < 2) {
-                str = '0' + str;
-            }
-            return str;
-        }
-        let durationInSec = this.audioPlayer.current.getDuration();
-        let minutes = Math.floor(durationInSec / 60);
-        let seconds = Math.round(durationInSec % 60);
-        this.setState({
-            currSongDuration: minutes + ':' + padNumber(seconds)
-        });
-    }
     
     /* Plays the next song in the queue after a short delay. */
     queueNextSong() {
@@ -98,8 +81,7 @@ export default class MusicPlayerInterface extends Component {
                     playing={ this.state.playing }
                     onEnded={ () => this.queueNextSong() }
                     onProgress={ (data) => this.updateSlider(data.played) }
-                    progressInterval={ 1000 }
-                    onReady={ () => this.setCurrSongDuration() } />
+                    progressInterval={ 1000 } />
                 <p>{ this.props.song.title }</p>
                 <Slider max={ 1 }
                     step={ 0.001 }

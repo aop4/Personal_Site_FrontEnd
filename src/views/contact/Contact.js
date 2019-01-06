@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './contact.css';
 import axios from 'axios';
+import { BASE_URL } from '../../constants';
 
 export default class Contact extends Component {
 
@@ -11,8 +12,10 @@ export default class Contact extends Component {
         };
     }
 
+    /* Sends a contact email after user hits 'Send.' Returns a promise for
+    request. */
     sendEmail(name, fromEmail, text) {
-        return axios.post('https://andrewpuglionesi-api.herokuapp.com/send_email',
+        return axios.post(BASE_URL + '/send_email',
                 {name: name, from_email: fromEmail, email_body: text});
     }
     
