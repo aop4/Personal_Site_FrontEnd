@@ -1,0 +1,45 @@
+import React, { Component } from 'react';
+import { If, Then, Else, When, Unless } from 'react-if';
+import Footer from '../footer/Footer';
+import Header from '../header/Header';
+import Sidebar from '../sidebar/Sidebar';
+import './base.css';
+
+export default class Base extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            lang: "English",
+            otherLang: "Español"
+        };
+    }
+    
+    /* Toggles the current language between "English" and "Spanish" */
+    changeLanguage() {
+        this.setState({
+            lang: this.state.otherLang,
+            otherLang: this.state.lang
+        });
+    }
+    
+    render() {
+        return (
+            <div>
+                <div className="main-container">
+                    <Header changeLanguage={ this.changeLanguage.bind(this) } 
+                        lang={ this.state.lang }
+                        otherLang={ this.state.otherLang }/>
+                    <div className="flex-container">
+                        <div className="sidebar">
+                            <Sidebar lang={ this.state.lang } />
+                        </div>
+                        <div className="content">
+                            { this.props.content } {/* shows component passed in */ }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+}

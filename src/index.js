@@ -1,3 +1,4 @@
+import 'react-app-polyfill/ie9'; // polyfill app for IE 9 support
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';

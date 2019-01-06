@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css?family=Reenie+Beanie');
+
+.home-container {
+    width: 95%;
+    margin: auto;
+    max-width: 700px;
+}
+
+.info-container {
+    font-size: 1em;
+}
+
+.small-header {
+    font-size: 1.3em;
+}
+
+.big-p {
+    font-size: 1.1em;
+    font-weight: 100;
+}
+
+p, .name {
+    /* color: #202020; */
+}
+
+.face {
+    height: 180px;
+    border-radius: 2px;
+}
+
+.arrow {
+    width: 100px;
+    margin-left: 5px;
+}
+
+div.name {
+    margin-left: 20px;
+}
+
+h1.name {
+    font-size: 2em;
+    font-family: 'Reenie Beanie', cursive;
+    margin: 0;
+    font-weight: 500;
+}
+
+.img-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,25 +1,46 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import {BrowserRouter, Route} from 'react-router-dom';
+import Base from './views/base/Base';
+import Resume from './views/resume/Resume';
+import Home from './views/home/Home';
 import './App.css';
+import Contact from './views/contact/Contact';
+import Footer from './views/footer/Footer';
+import MusicPage from './views/music-page/MusicPage';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div class="expand">
+        <BrowserRouter>
+          <div class="page">
+            <Route exact={true} path='/' render={() => (
+              <div className="App">
+                <Base lang="English"
+                  content={ <Home /> } />
+              </div>
+            )}/>
+            <Route exact={true} path='/resume' render={() => (
+                <div className="App">
+                  <Base lang="English"
+                    content={ <Resume /> } />
+                </div>
+            )}/>
+            <Route exact={true} path='/contact' render={() => (
+                <div className="App">
+                  <Base lang="English"
+                    content={ <Contact /> } />
+                </div>
+            )}/>
+            <Route exact={true} path='/music' render={() => (
+                <div className="App">
+                  <Base lang="English"
+                    content={ <MusicPage /> } />
+                </div>
+            )}/>
+          </div>
+        </BrowserRouter>
+        <Footer />
       </div>
     );
   }
