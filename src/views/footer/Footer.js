@@ -10,7 +10,8 @@ export default class Footer extends Component {
                 <a href="https://stringsofcharacters.wordpress.com/"> WordPress blog</a> • 
                 <a href="https://www.youtube.com/channel/UCbTleumNUKaZeGD8OdSlVqA"> YouTube</a> •
                 <a href="https://www.google.com/search?q=Andrew+Puglionesi"
-                    target="_blank"> Google me
+                    target="_blank"
+                    rel="noopener noreferrer"> Google me
                 </a>
                 <p>Built from scratch with React, Ruby on Rails, and &lt;3.</p>
             </div>

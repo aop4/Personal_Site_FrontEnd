@@ -8,9 +8,11 @@ export default class Home extends Component {
         return (
             <div className="home-container">
                 <div className="img-container">
-                    <img className="face" src="images/portrait.jpg"></img>
+                    <img className="face" 
+                        src="images/portrait.jpg"
+                        alt=""></img>
                     <div className="inline-block">
-                        <div class="name"><h1 class="name">Andrew Puglionesi</h1></div>
+                        <div className="name"><h1 class="name">Andrew Puglionesi</h1></div>
                     </div>
                 </div>
                 <div class="info-container">

@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { If, Then, Else, When, Unless } from 'react-if';
-import Footer from '../footer/Footer';
 import Header from '../header/Header';
 import Sidebar from '../sidebar/Sidebar';
 import './base.css';
