@@ -11,7 +11,7 @@ export default class MusicPage extends Component {
         super(props);
         this.musicPlayer = React.createRef();
         this.state = {
-            albums: {},
+            albums: [],
             currentAlbum: {songs: []},
             currentSong: {},
             currentSongIndex: 0
@@ -81,23 +81,36 @@ export default class MusicPage extends Component {
         this.playSong(nextSongIndex);
     }
 
+    setCurrentAlbum(album) {
+        this.setState({ currentAlbum: album })
+    }
+
     render() {
         return (
             <div className="music-container">
                 <h1>Albums</h1>
-                <h3>{ this.state.currentAlbum.title }</h3>
-                { this.state.currentAlbum.description }
-                <MusicPlayerInterface
-                    ref={ this.musicPlayer }
-                    song={ this.state.currentSong }
-                    playNextSong={ () => this.playNextSong() }
-                    playPrevSong={ () => this.playPrevSong() }
-                    playFirstSong={ () => this.playSong(0) } />
-                {this.state.currentAlbum.songs.map((song, index) =>
-                    <SongSelector song={ song }
-                        playSong={ () => this.playSong(index) }
-                        key={ song.id } />
+                {this.state.albums.map((album) =>
+                    <button key={ album.id }
+                        onClick={ () => this.setCurrentAlbum(album) }
+                        className={ "album-btn " + (this.state.currentAlbum.id === album.id ? ' active-link':'') }>
+                        { album.title }
+                    </button>
                 )}
+                <p>{ this.state.currentAlbum.description }</p>
+                <div className="controls-container">
+                    <MusicPlayerInterface
+                        ref={ this.musicPlayer }
+                        song={ this.state.currentSong }
+                        playNextSong={ () => this.playNextSong() }
+                        playPrevSong={ () => this.playPrevSong() }
+                        playFirstSong={ () => this.playSong(0) } />
+                    {this.state.currentAlbum.songs.map((song, index) =>
+                        <SongSelector song={ song }
+                            playSong={ () => this.playSong(index) }
+                            key={ song.id }
+                            currentSong={ this.state.currentSong } />
+                    )}
+                </div>
             </div>
         );
     }

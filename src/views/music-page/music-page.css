@@ -1,3 +1,27 @@
 .music-container {
     padding-left: 2em;
 }
+
+/* Center controls and tracks on mobile device/small tablet */
+@media only screen and (max-width: 899px) {
+    .controls-container {
+        margin: auto;
+    }
+}
+
+/* Move controls and tracks a bit to the right on a large screen */
+@media only screen and (min-width: 900px) {
+    .controls-container {
+        margin-left: 5em;
+    }
+}
+
+.controls-container {
+    width: 90%;
+    max-width: 500px;
+    margin-top: 4em;
+}
+
+.album-btn {
+    font-size: 1.2em;
+}

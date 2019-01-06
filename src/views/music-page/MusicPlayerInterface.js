@@ -4,6 +4,8 @@ import 'rc-slider/assets/index.css';
 import './music-player-interface.css';
 import ReactPlayer from 'react-player';
 import { BASE_URL } from '../../constants';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { If, Then, Else } from 'react-if';
 
 export default class MusicPlayerInterface extends Component {
 
@@ -82,20 +84,24 @@ export default class MusicPlayerInterface extends Component {
                     onEnded={ () => this.queueNextSong() }
                     onProgress={ (data) => this.updateSlider(data.played) }
                     progressInterval={ 1000 } />
-                <p>{ this.props.song.title }</p>
                 <Slider max={ 1 }
                     step={ 0.001 }
                     value={ this.state.fractionPlayed }
                     onChange={ newVal => this.setState({ fractionPlayed: newVal }) }
-                    onAfterChange={ (newVal) => this.audioPlayer.current.seekTo(newVal) }/>
+                    onAfterChange={ (newVal) => this.audioPlayer.current.seekTo(newVal) }
+                    railStyle={ {background: '#ddd'} }
+                    trackStyle={ {background: '#4a86e8'} }/>
                 <button onClick={ () => this.props.playPrevSong() }>
-                    Previous
+                    <FontAwesomeIcon icon="backward" />
                 </button>
                 <button onClick={ () => this.handlePlayPauseBtnClick() }>
-                    { this.state.playing ? "Pause" : "Play" }
+                    <If condition={ this.state.playing }>
+                        <Then><FontAwesomeIcon icon="pause" /></Then>
+                        <Else><FontAwesomeIcon icon="play" /></Else>
+                    </If>
                 </button>
                 <button onClick={ () => this.props.playNextSong() }>
-                    Next
+                    <FontAwesomeIcon icon="forward" />
                 </button>
             </div>
         );

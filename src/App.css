@@ -27,6 +27,7 @@ button {
   border: none;
   color: #4a86e8;
   cursor: pointer;
+  text-align: left;
 }
 
 @media only screen and (min-width: 900px) {
@@ -75,4 +76,9 @@ h1, h2, h3, h4, h5, h6, p, a {
 a {
   cursor: pointer;
   color: #4a86e8;
+}
+
+.active-link {
+  color: #333;
+  font-weight: 900;
 }

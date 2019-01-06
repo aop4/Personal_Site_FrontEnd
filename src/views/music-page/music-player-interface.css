@@ -1,4 +1,9 @@
-.music-player {
-    width: 90%;
-    max-width: 500px;
+.music-player > button {
+    color: #333;
+    font-size: 1.3em;
+    margin: 1.3em 1em 2em 1em;
+}
+
+.music-player > button:hover {
+    color: #222;
 }

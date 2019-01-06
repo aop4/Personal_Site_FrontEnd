@@ -1,3 +1,13 @@
 .lyrics {
     white-space: pre;
+    padding-left: 2em;
+}
+
+.lyrics-btn {
+    color: #444;
+}
+
+.select-song-btn, .lyrics-btn {
+    margin: 0.5em 0;
+    font-size: 1em;
 }

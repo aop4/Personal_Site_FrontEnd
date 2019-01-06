@@ -22,14 +22,17 @@ export default class SongSelector extends Component {
     render() {
         return (
             <div>
-                <button onClick={ () => this.props.playSong() }>
+                <button onClick={ () => this.props.playSong() }
+                    className={"select-song-btn " + 
+                        (this.props.currentSong.id === this.props.song.id ? 'active-link':'') }>
                     { this.props.song.title }
                 </button>
                 <If condition={ this.props.song.lyrics.length > 0 }>
                     <Then>
-                        <button onClick={ () => this.toggleLyrics() }>Lyrics</button>
+                        <button className="lyrics-btn"
+                            onClick={ () => this.toggleLyrics() }>Lyrics</button>
                         <SlideDown closed={ this.state.hideLyrics }>
-                            <p class="lyrics">
+                            <p className="lyrics">
                                 { this.props.song.lyrics }
                             </p>
                         </SlideDown>
