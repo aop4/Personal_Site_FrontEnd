@@ -4,6 +4,7 @@ import axios from 'axios';
 import SongSelector from './SongSelector';
 import './music-page.css';
 import { BASE_URL } from '../../constants';
+import LoadingScreen from '../loading-screen/LoadingScreen';
 
 export default class MusicPage extends Component {
 
@@ -16,12 +17,18 @@ export default class MusicPage extends Component {
             currentSong: {},
             currentSongIndex: 0
         };
+        this.loadingScreen = React.createRef();
+    }
+
+    componentDidMount() {
         this.getAlbums();
     }
 
     getAlbums() {
+        this.loadingScreen.current.onLoadingStarted();
         axios.get(BASE_URL + '/albums')
         .then((resp) => {
+            this.loadingScreen.current.onLoadingSucceeded();
             // set the current album to the first album and the current song
             // to the first song
             let albums = resp.data;
@@ -30,6 +37,9 @@ export default class MusicPage extends Component {
                 currentAlbum: albums[0],
                 currentSong: albums[0].songs[0]
             });
+        }, (err) => {
+            console.log(err);
+            this.loadingScreen.current.onLoadingFailed();
         });
     }
 
@@ -104,6 +114,7 @@ export default class MusicPage extends Component {
                         playNextSong={ () => this.playNextSong() }
                         playPrevSong={ () => this.playPrevSong() }
                         playFirstSong={ () => this.playSong(0) } />
+                    <LoadingScreen ref={ this.loadingScreen } />
                     {this.state.currentAlbum.songs.map((song, index) =>
                         <SongSelector song={ song }
                             playSong={ () => this.playSong(index) }
