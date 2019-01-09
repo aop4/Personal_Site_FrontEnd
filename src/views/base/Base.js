@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../header/Header';
-import Sidebar from '../sidebar/Sidebar';
 import './base.css';
+import SidebarWithRouter from '../sidebar/Sidebar';
 
 export default class Base extends Component {
 
@@ -30,7 +30,7 @@ export default class Base extends Component {
                         otherLang={ this.state.otherLang }/>
                     <div className="flex-container">
                         <div className="sidebar">
-                            <Sidebar lang={ this.state.lang } />
+                            <SidebarWithRouter lang={ this.state.lang } />
                         </div>
                         <div className="content">
                             { this.props.content } {/* shows component passed in */ }

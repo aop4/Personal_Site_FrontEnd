@@ -14,6 +14,7 @@ import { faPlay, faPause, faBackward, faForward, faPeace } from '@fortawesome/fr
 library.add(faPlay, faPause, faBackward, faForward, faPeace);
 
 class App extends Component {
+
   render() {
     return (
       <div class="expand">
