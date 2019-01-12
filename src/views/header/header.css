@@ -21,12 +21,18 @@
 
 /* Position and sizing of burger button */
 .bm-burger-button {
-    position: fixed;
+    position: absolute;
     width: 36px;
     height: 30px;
-    left: 36px;
-    top: 36px;
-  }
+    left: 20px;
+    top: 20px;
+}
+
+#burger-menu {
+  position: fixed;
+  right: auto !important;
+  left: 0px;
+}
   
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
