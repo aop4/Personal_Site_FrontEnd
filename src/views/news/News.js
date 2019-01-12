@@ -54,7 +54,7 @@ export default class News extends Component {
                 {this.state.newsItems.map((item) => 
                     <p key={ item.id }>
                         <span className="date-string">
-                            { this.props.lang === 'es' ? item.spanishDateString : item.dateString} • &#20;
+                            { this.props.lang === 'es' ? item.spanishDateString : item.dateString} •&nbsp;
                         </span>
                         <If condition={ this.props.lang === 'es' && item.spanish_text.length > 0 }>
                             <Then>
