@@ -48,7 +48,7 @@ class Sidebar extends Component {
         return (
             <ul>
                 {this.state.navLinks.map((linkData, index) => 
-                    <li key={ linkData.href }>
+                    <li key={ linkData.englishHref }>
                         <Link to={ this.getLinkFor(linkData) }
                             className={ this.isActiveNavLink(linkData) ? 'active-nav-link':'' }>
                             <If condition={this.props.lang === 'es'}>

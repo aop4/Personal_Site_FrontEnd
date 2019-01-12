@@ -52,7 +52,7 @@ export default class News extends Component {
             <div>
                 <LoadingScreen ref={ this.loadingScreen } />
                 {this.state.newsItems.map((item) => 
-                    <p>
+                    <p key={ item.id }>
                         <span className="date-string">
                             { this.props.lang === 'es' ? item.spanishDateString : item.dateString} • &#20;
                         </span>

@@ -8,7 +8,6 @@ export default class Resume extends Component {
     resizeIframe(event) {
         const pdfHeightWidthRatio = 11 / 8.5; // height:width ratio for one-page pdf
         let iframe = event.target;
-        console.log(event.target);
         let frameWidth = iframe.clientWidth; // width of iframe in HTML doc
         // scale the height of the iframe based on its computed width
         let frameHeight = frameWidth * pdfHeightWidthRatio;

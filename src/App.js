@@ -17,7 +17,7 @@ class App extends Component {
 
   render() {
     return (
-      <div class="expand">
+      <div className="expand">
         <BrowserRouter>
           <div className="site-page">
             <Route path='/:lang(|es)' render={() => (

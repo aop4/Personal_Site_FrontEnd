@@ -13,10 +13,12 @@ export default class Home extends Component {
                         src="images/portrait.jpg"
                         alt=""></img>
                     <div className="inline-block">
-                        <div className="name"><h1 class="name">Andrew Puglionesi</h1></div>
+                        <div className="name">
+                            <h1 className="name">Andrew Puglionesi</h1>
+                        </div>
                     </div>
                 </div>
-                <div class="info-container">
+                <div className="info-container">
                     <h2 className="small-header">
                         { this.props.lang === 'es' ? 'Sobre Mí' : 'About Me' }
                     </h2>
