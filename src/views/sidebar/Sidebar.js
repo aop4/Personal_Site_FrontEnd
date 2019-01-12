@@ -5,10 +5,11 @@ import { Link } from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
 
 class SidebarLink {
-    constructor(englishText, spanishText, href) {
+    constructor(englishText, spanishText, englishHref, spanishHref) {
         this.englishText = englishText;
         this.spanishText = spanishText;
-        this.href = href;
+        this.englishHref = englishHref;
+        this.spanishHref = spanishHref;
     }
 }
 
@@ -17,14 +18,30 @@ class Sidebar extends Component {
     constructor(props) {
         super(props)
         let navLinks = [
-            new SidebarLink('Home', 'Home', '/'),
-            new SidebarLink('Resume', 'Resumen', '/resume'),
-            new SidebarLink('Music', 'Música', '/music'),
-            new SidebarLink('Contact', 'Contáctame', '/contact')
+            new SidebarLink('Home', 'Inicio', '/', '/es'),
+            new SidebarLink('Resume', 'Resumen', '/resume', '/resume/es'),
+            new SidebarLink('Music', 'Música', '/music', '/music/es'),
+            new SidebarLink('Contact', 'Contáctame', '/contact', '/contact/es')
         ];
         this.state = {
             navLinks: navLinks
         };
+    }
+
+    getLinkFor(linkData) {
+        // if current lang is spanish
+        if (this.props.lang === 'es') {
+            return linkData.spanishHref;
+        }
+        return linkData.englishHref;
+    }
+
+    /* Returns true if the navigation link to the sidebar item `linkData` is a 
+    link to the current page and so should be highlighted. */
+    isActiveNavLink(linkData) {
+        let currURL = this.props.location.pathname; // current URL path
+        return (this.props.lang === 'en' && currURL === linkData.englishHref) ||
+            (this.props.lang === 'es' && currURL === linkData.spanishHref);
     }
     
     render() {
@@ -32,9 +49,9 @@ class Sidebar extends Component {
             <ul>
                 {this.state.navLinks.map((linkData, index) => 
                     <li key={ linkData.href }>
-                        <Link to={ linkData.href }
-                            className={ this.props.location.pathname === linkData.href ? 'active-nav-link':'' }>
-                            <If condition={this.props.lang === 'Español'}>
+                        <Link to={ this.getLinkFor(linkData) }
+                            className={ this.isActiveNavLink(linkData) ? 'active-nav-link':'' }>
+                            <If condition={this.props.lang === 'es'}>
                                 <Then>
                                     { linkData.spanishText }
                                 </Then>

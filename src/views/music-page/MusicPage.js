@@ -38,17 +38,13 @@ export default class MusicPage extends Component {
                 currentSong: albums[0].songs[0]
             });
         }, (err) => {
-            console.log(err);
             this.loadingScreen.current.onLoadingFailed();
         });
     }
 
     /* Updates the play count of `song` in the database */
     updatePlayCount(song, album) {
-        axios.patch(BASE_URL + '/albums/' + album.id + '/songs/' + song.id)
-        .then(() => {}, (err) => {
-            console.log(err);
-        });
+        axios.patch(BASE_URL + '/albums/' + album.id + '/songs/' + song.id);
     }
 
     /* Returns true if index is not a valid index for this.currentAlbum.songs
@@ -98,7 +94,7 @@ export default class MusicPage extends Component {
     render() {
         return (
             <div className="music-container">
-                <h1>Albums</h1>
+                <h1>{ this.props.lang === 'es' ? 'Álbumes':'Albums' }</h1>
                 {this.state.albums.map((album) =>
                     <button key={ album.id }
                         onClick={ () => this.setCurrentAlbum(album) }
@@ -106,7 +102,7 @@ export default class MusicPage extends Component {
                         { album.title }
                     </button>
                 )}
-                <p>{ this.state.currentAlbum.description }</p>
+                <p>{ this.props.lang === 'es' ? this.state.currentAlbum.spanish_desc : this.state.currentAlbum.description }</p>
                 <div className="controls-container">
                     <MusicPlayerInterface
                         ref={ this.musicPlayer }

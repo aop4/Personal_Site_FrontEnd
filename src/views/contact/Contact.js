@@ -27,7 +27,7 @@ export default class Contact extends Component {
         let text = formData.get('comment');
         this.sendEmail(name, emailAddress, text)
         .then((res) => {
-            this.setState({ message: "✔ Your message has been sent. It's currently going through Mordor on horseback." });
+            this.setState({ message: "✔ Your message has been sent. It travels o'er the hills of Mordor." });
         }, (err) => {
             alert("Your message couldn't be sent. Try shooting an email to andrewpuglionesi@gmail.com");
         });
@@ -38,18 +38,20 @@ export default class Contact extends Component {
             <div className="contact-container">
                 <form id="contact-form"
                     onSubmit={ (event) => this.handleSubmit(event) }>
-                    <h1>Contact me</h1>
+                    <h1>{ this.props.lang === 'es' ? 'Contáctame' : 'Contact me'}</h1>
                     <input required type="text" 
                         name="name"
-                        placeholder="  Your name" />
+                        placeholder={ this.props.lang === 'es' ? "  Su nombre" : "  Your name" }/>
                     <input required type="email" 
                         name="emailAddress"
-                        placeholder="  Your email address" />
-                    <textarea placeholder=" Write your message here"
+                        placeholder={ this.props.lang === 'es' ? "  Su dirección de correo electrónico" : "  Your email address" } />
+                    <textarea placeholder={ this.props.lang === 'es' ? " Escriba su mensaje aquí" : " Write your message here" }
                         name="comment"
                         rows="7" />
                     <p className="message">{ this.state.message }</p>
-                    <button className="send-btn">Send</button>
+                    <button className="send-btn">
+                        { this.props.lang === 'es' ? "  Enviar" : "  Send" }
+                    </button>
                 </form>
             </div>
         );

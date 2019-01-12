@@ -19,29 +19,26 @@ class App extends Component {
     return (
       <div class="expand">
         <BrowserRouter>
-          <div class="page">
-            <Route exact={true} path='/' render={() => (
+          <div className="site-page">
+            <Route path='/:lang(|es)' render={() => (
               <div className="App">
                 <Base lang="English"
                   content={ <Home /> } />
               </div>
             )}/>
-            <Route exact={true} path='/resume' render={() => (
+            <Route path='/resume/:lang(|es)?' render={() => (
                 <div className="App">
-                  <Base lang="English"
-                    content={ <Resume /> } />
+                  <Base content={ <Resume /> } />
                 </div>
             )}/>
-            <Route exact={true} path='/contact' render={() => (
+            <Route path='/contact/:lang(|es)?' render={() => (
                 <div className="App">
-                  <Base lang="English"
-                    content={ <Contact /> } />
+                  <Base content={ <Contact /> } />
                 </div>
             )}/>
-            <Route exact={true} path='/music' render={() => (
+            <Route path='/music/:lang(|es)?' render={() => (
                 <div className="App">
-                  <Base lang="English"
-                    content={ <MusicPage /> } />
+                  <Base content={ <MusicPage /> } />
                 </div>
             )}/>
           </div>

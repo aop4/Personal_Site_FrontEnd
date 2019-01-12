@@ -24,7 +24,7 @@ export default class Resume extends Component {
                         marginLeft: '20px'
                     } }
                     title="file"
-                    src='./AndrewPuglionesiResume.pdf'
+                    src='/AndrewPuglionesiResume.pdf'
                     onLoad={ (event) => { this.resizeIframe(event) } } />
             </div>
         );
