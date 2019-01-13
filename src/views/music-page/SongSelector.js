@@ -3,6 +3,7 @@ import { If, Then } from 'react-if';
 import {SlideDown} from 'react-slidedown';
 import 'react-slidedown/lib/slidedown.css';
 import './song-selector.css';
+import renderHTML from 'react-render-html';
 
 export default class SongSelector extends Component {
 
@@ -33,7 +34,7 @@ export default class SongSelector extends Component {
                             onClick={ () => this.toggleLyrics() }>Lyrics</button>
                         <SlideDown closed={ this.state.hideLyrics }>
                             <p className="lyrics">
-                                { this.props.song.lyrics }
+                                { renderHTML(this.props.song.lyrics) }
                             </p>
                         </SlideDown>
                     </Then>
