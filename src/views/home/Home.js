@@ -11,10 +11,13 @@ export default class Home extends Component {
                 <div className="img-container">
                     <img className="face" 
                         src="images/portrait.jpg"
-                        alt=""></img>
+                        alt="" />
                     <div className="inline-block">
                         <div className="name">
                             <h1 className="name">Andrew Puglionesi</h1>
+                            {/* <img className="arrow"
+                                src="images/arrow.png"
+                                alt="" /> */}
                         </div>
                     </div>
                 </div>

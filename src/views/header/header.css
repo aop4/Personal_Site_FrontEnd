@@ -1,31 +1,31 @@
 .header {
-    /* Use this if you add anything to header: */
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 20px 20px 40px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 20px 40px 20px;
 }
 
 .title {
-    margin-top: 0px;
-    font-weight: 500;
+  margin-top: 0px;
+  font-weight: 500;
 }
 
 .lang-toggle {
-    font-size: 1.15em;
+  font-size: 1.15em;
+  font-weight: 700;
 }
 
 .bm-menu-wrap {
-    width: auto !important; /* overwrite inline style */
+  width: auto !important; /* overwrite inline style */
 }
 
 /* Position and sizing of burger button */
 .bm-burger-button {
-    position: absolute;
-    width: 36px;
-    height: 30px;
-    left: 20px;
-    top: 20px;
+  position: absolute;
+  width: 36px;
+  height: 30px;
+  left: 20px;
+  top: 20px;
 }
 
 #burger-menu {
