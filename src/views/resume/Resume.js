@@ -20,11 +20,11 @@ export default class Resume extends Component {
                 <iframe className="frame"
                     style={ {
                         minWidth: "90%", 
-                        marginLeft: '20px'
+                        marginLeft: '20px',
+                        height: '90vh'
                     } }
                     title="file"
-                    src='/AndrewPuglionesiResume.pdf'
-                    onLoad={ (event) => { this.resizeIframe(event) } } />
+                    src='/AndrewPuglionesiResume.pdf' />
             </div>
         );
     }
