@@ -5,6 +5,7 @@ import SongSelector from './SongSelector';
 import './music-page.css';
 import { BASE_URL } from '../../constants';
 import LoadingScreen from '../loading-screen/LoadingScreen';
+import { If, Then } from 'react-if';
 
 export default class MusicPage extends Component {
 
@@ -102,21 +103,30 @@ export default class MusicPage extends Component {
                         { album.title }
                     </button>
                 )}
-                <p>{ this.props.lang === 'es' ? this.state.currentAlbum.spanish_desc : this.state.currentAlbum.description }</p>
-                <div className="controls-container">
-                    <MusicPlayerInterface
-                        ref={ this.musicPlayer }
-                        song={ this.state.currentSong }
-                        playNextSong={ () => this.playNextSong() }
-                        playPrevSong={ () => this.playPrevSong() }
-                        playFirstSong={ () => this.playSong(0) } />
-                    <LoadingScreen ref={ this.loadingScreen } />
-                    {this.state.currentAlbum.songs.map((song, index) =>
-                        <SongSelector song={ song }
-                            playSong={ () => this.playSong(index) }
-                            key={ song.id }
-                            currentSong={ this.state.currentSong } />
-                    )}
+                <div className="album-container">
+                    <p>{ this.props.lang === 'es' ? this.state.currentAlbum.spanish_desc : this.state.currentAlbum.description }</p>
+                    <If condition={ this.state.currentAlbum.album_art_path != '' } >
+                        <Then>
+                            <img className="album-cover" 
+                                src={ BASE_URL + this.state.currentAlbum.album_art_path }
+                                alt="" />
+                        </Then>
+                    </If>
+                    <div className="controls-container">
+                        <MusicPlayerInterface
+                            ref={ this.musicPlayer }
+                            song={ this.state.currentSong }
+                            playNextSong={ () => this.playNextSong() }
+                            playPrevSong={ () => this.playPrevSong() }
+                            playFirstSong={ () => this.playSong(0) } />
+                        <LoadingScreen ref={ this.loadingScreen } />
+                        {this.state.currentAlbum.songs.map((song, index) =>
+                            <SongSelector song={ song }
+                                playSong={ () => this.playSong(index) }
+                                key={ song.id }
+                                currentSong={ this.state.currentSong } />
+                        )}
+                    </div>
                 </div>
             </div>
         );
