@@ -105,9 +105,10 @@ export default class MusicPage extends Component {
                 )}
                 <div className="album-container">
                     <p>{ this.props.lang === 'es' ? this.state.currentAlbum.spanish_desc : this.state.currentAlbum.description }</p>
-                    <If condition={ this.state.currentAlbum.album_art_path != '' } >
+                    <If condition={ this.state.currentAlbum.album_art_path !== ''
+                        && this.state.currentAlbum.album_art_path !== undefined }>
                         <Then>
-                            <img className="album-cover" 
+                            <img className="album-cover"
                                 src={ BASE_URL + this.state.currentAlbum.album_art_path }
                                 alt="" />
                         </Then>

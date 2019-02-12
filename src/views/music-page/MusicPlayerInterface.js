@@ -70,7 +70,7 @@ export default class MusicPlayerInterface extends Component {
         return (
             <div className="center music-player">
                 <ReactPlayer className="hidden"
-                    url={ BASE_URL + this.props.currentSong.file_path }
+                    url={ BASE_URL + (this.props.currentSong.file_path || '') }
                     ref={ this.audioPlayer }
                     playing={ this.state.playing }
                     onEnded={ () => this.queueNextSong() }
