@@ -62,12 +62,12 @@ export default class MusicPage extends Component {
             return;
         }
         let song = this.state.currentAlbum.songs[index];
-        this.musicPlayer.current.playNew(song);
-        this.updatePlayCount(song, this.state.currentAlbum);
         this.setState({
             currentSongIndex: index,
             currentSong: song
         });
+        this.musicPlayer.current.playNew(song);
+        this.updatePlayCount(song, this.state.currentAlbum);
     }
 
     playNextSong() {
@@ -89,7 +89,7 @@ export default class MusicPage extends Component {
     }
 
     setCurrentAlbum(album) {
-        this.setState({ currentAlbum: album })
+        this.setState({ currentAlbum: album });
     }
 
     render() {
@@ -115,10 +115,9 @@ export default class MusicPage extends Component {
                     <div className="controls-container">
                         <MusicPlayerInterface
                             ref={ this.musicPlayer }
-                            song={ this.state.currentSong }
+                            currentSong={ this.state.currentSong }
                             playNextSong={ () => this.playNextSong() }
-                            playPrevSong={ () => this.playPrevSong() }
-                            playFirstSong={ () => this.playSong(0) } />
+                            playPrevSong={ () => this.playPrevSong() } />
                         <LoadingScreen ref={ this.loadingScreen } />
                         {this.state.currentAlbum.songs.map((song, index) =>
                             <SongSelector song={ song }

@@ -14,12 +14,10 @@ export default class MusicPlayerInterface extends Component {
         this.audioPlayer = React.createRef();
         this.state = {
             playing: false,
-            songUrl: null,
+            songUrl: '',
             fractionPlayed: 0 // the fraction of the current song that's been
                                 // played (in range [0, 1])
         };
-        this.isFirstPlay = true; // DO NOT put this in state. Need instant
-                // feedback on its value, and state is updated asynchronously
     }
 
     playNew(song) {
@@ -42,14 +40,8 @@ export default class MusicPlayerInterface extends Component {
         }
     }
 
-    /* Resumes or initializes playback. If no song has been played, plays the first
-    song in the parent's album. */
+    /* Resumes or initializes playback. */
     resume() {
-        // if no song has been played, play the first song in the parent's album
-        if (this.isFirstPlay) {
-            this.isFirstPlay = false;
-            this.props.playFirstSong();
-        }
         this.setState({
             playing: true
         });
@@ -78,7 +70,7 @@ export default class MusicPlayerInterface extends Component {
         return (
             <div className="center music-player">
                 <ReactPlayer className="hidden"
-                    url={ this.state.url }
+                    url={ BASE_URL + this.props.currentSong.file_path }
                     ref={ this.audioPlayer }
                     playing={ this.state.playing }
                     onEnded={ () => this.queueNextSong() }
