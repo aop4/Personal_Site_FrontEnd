@@ -17,7 +17,7 @@ export default class LoadingScreen extends Component {
     /* call when loading of data begins. Shows a loading message and a spinner */
     onLoadingStarted() {
         this.setState({
-            message: 'Loading...',
+            message: 'Waking up a snoring server...',
             showSpinner: true,
             hideAll: false
         });
