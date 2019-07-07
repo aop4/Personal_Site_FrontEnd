@@ -1,1 +1,1 @@
-export const BASE_URL = 'https://andrewpuglionesi-api.herokuapp.com';
+export const BASE_URL = 'https://andrewpuglionesi-api.appspot.com';
