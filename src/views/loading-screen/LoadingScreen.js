@@ -9,26 +9,36 @@ export default class LoadingScreen extends Component {
         super(props);
         this.state = {
             message: '',
-            showSpinner: false,
-            hideAll: true
+            hideAll: true,
+            isLoading: false
         };
     }
 
     /* call when loading of data begins. Shows a loading message and a spinner */
     onLoadingStarted() {
         this.setState({
-            message: 'Waking up a snoring server...',
-            showSpinner: true,
-            hideAll: false
+            isLoading: true
         });
+        // add a slight delay to avoid jerky rendering on quick loads
+        setTimeout(() => { this.displayLoadingScreen() }, 100);
+    }
+
+    displayLoadingScreen() {
+        // if still loading after delay
+        if (this.state.isLoading) {
+            this.setState({
+                message: 'Waking up a snoring server...',
+                hideAll: false
+            });
+        }
     }
 
     /* call when loading of data fails. Shows a failure message */
     onLoadingFailed() {
         this.setState({
             message: 'Failed to load content.',
-            showSpinner: false,
-            hideAll: false
+            hideAll: false,
+            isLoading: false
         });
     }
 
@@ -36,8 +46,8 @@ export default class LoadingScreen extends Component {
     onLoadingSucceeded() {
         this.setState({
             message: '',
-            showSpinner: false,
-            hideAll: true
+            hideAll: true,
+            isLoading: false
         });
     }
 
@@ -45,7 +55,7 @@ export default class LoadingScreen extends Component {
         return (
             <div className={ 'loading-container ' + (this.state.hideAll ? 'hidden':'') }>
                 <FontAwesomeIcon icon="peace"
-                    className={ "loading-icon " + (this.state.showSpinner ? '':'hidden') }
+                    className={ "loading-icon " + (this.state.isLoading ? '':'hidden') }
                     spin />
                 <p>{ this.state.message }</p>
             </div>
