@@ -6,17 +6,38 @@ import renderHTML from 'react-render-html';
 import { BASE_URL } from '../../constants';
 import LoadingScreen from '../loading-screen/LoadingScreen';
 import { If, Then, Else } from 'react-if';
+import PageNumberList from '../pagination/PageNumberList';
 
 export default class News extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            newsItems: [],
+            currentPage: 1,
+            numPages: 1
+        };
+        this.loadingScreen = React.createRef();
+        this.pageNumberList = React.createRef();
+    }
+
+    componentDidMount() {
+        this.retrieveNewsItems(1);
+    }
     
-    retrieveNewsItems() {
+    retrieveNewsItems(pageNum) {
         this.loadingScreen.current.onLoadingStarted();
-        axios.get(BASE_URL + '/news_items')
+        axios.get(BASE_URL + '/news_items/?pageNum=' + pageNum)
         .then((resp) => {
             this.loadingScreen.current.onLoadingSucceeded();
-            let newsItems = resp.data;
+            let newsItems = resp.data.data;
             this.addDates(newsItems);
-            this.setState({ newsItems: newsItems });
+            this.setState({ 
+                newsItems: newsItems,
+                currentPage: resp.data.currPage,
+                numPages: resp.data.numPages
+            });
+            this.pageNumberList.current.refreshPageNumbers();
         }, (err) => {
             this.loadingScreen.current.onLoadingFailed();
         });
@@ -33,18 +54,6 @@ export default class News extends Component {
             item.spanishDateString = dateFormat(date, 'd/m/yy');
             item.dateString = dateFormat(date, 'mmmm d, yyyy');
         });
-    }
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            newsItems: []
-        };
-        this.loadingScreen = React.createRef();
-    }
-
-    componentDidMount() {
-        this.retrieveNewsItems();
     }
 
     render() {
@@ -66,6 +75,10 @@ export default class News extends Component {
                         </If>
                     </p>
                 )}
+                <PageNumberList numPages={ this.state.numPages }
+                    currentPage={ this.state.currentPage }
+                    ref={ this.pageNumberList }
+                    switchToPage={ (pageNum) => this.retrieveNewsItems(pageNum) } />
             </div>
         );
     }
