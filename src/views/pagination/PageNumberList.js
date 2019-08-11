@@ -29,7 +29,7 @@ export default class PageNumberList extends Component {
                 {this.state.pageNums.map((pageNumber) => 
                     <PageNumber pageNum={ pageNumber }
                         key={ pageNumber }
-                        isSelected = { this.props.currentPage == pageNumber }
+                        isSelected = { this.props.currentPage === pageNumber }
                         switchToPage={ () => this.props.switchToPage(pageNumber) } />
                 )}
             </div>
