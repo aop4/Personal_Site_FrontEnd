@@ -1,0 +1,17 @@
+.page-select-button {
+    background-color: #ddd;
+    border-radius: 3px;
+    width: 2em;
+    height: 2em;
+    margin: 0.5em;
+    text-align: center;
+}
+
+.page-select-button:hover:not(.page-select-button-active) {
+    background-color: #fff;
+    transform: translateY(-0.2em);
+}
+
+.page-select-button-active {
+    background-color: #aaa;
+}
