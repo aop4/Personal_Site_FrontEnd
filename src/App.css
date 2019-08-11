@@ -28,6 +28,11 @@ button {
   color: #4a86e8;
   cursor: pointer;
   text-align: left;
+  outline: none;
+}
+
+button::-moz-focus-inner {
+  border: 0;
 }
 
 @media only screen and (min-width: 900px) {
