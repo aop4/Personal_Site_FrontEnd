@@ -22,6 +22,7 @@ class Sidebar extends Component {
             new SidebarLink('Resume', 'Resumen', '/resume', '/resume/es'),
             new SidebarLink('Music', 'Música', '/music', '/music/es'),
             new SidebarLink('Photos', 'Fotos', '/photography', '/photography/es'),
+            new SidebarLink('Software', 'Software', '/software', '/software/es'),
             new SidebarLink('Contact', 'Contáctame', '/contact', '/contact/es')
         ];
         this.state = {

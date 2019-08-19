@@ -10,6 +10,7 @@ import MusicPage from './views/music-page/MusicPage';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPlay, faPause, faBackward, faForward, faPeace, faExpandArrowsAlt } from '@fortawesome/free-solid-svg-icons';
 import PhotographyPage from './views/photography/PhotographyPage';
+import SoftwarePage from './views/software/SoftwarePage';
 
 // pre-load FontAwesome icons for use in project
 library.add(faPlay, faPause, faBackward, faForward, faPeace, faExpandArrowsAlt);
@@ -45,6 +46,11 @@ class App extends Component {
             <Route path='/photography/:lang(|es)?' render={() => (
                 <div className="App">
                   <Base content={ <PhotographyPage /> } />
+                </div>
+            )}/>
+            <Route path='/software/:lang(|es)?' render={() => (
+                <div className="App">
+                  <Base content={ <SoftwarePage /> } />
                 </div>
             )}/>
           </div>
