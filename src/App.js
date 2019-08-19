@@ -8,10 +8,11 @@ import Contact from './views/contact/Contact';
 import Footer from './views/footer/Footer';
 import MusicPage from './views/music-page/MusicPage';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faPlay, faPause, faBackward, faForward, faPeace } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faPause, faBackward, faForward, faPeace, faExpandArrowsAlt } from '@fortawesome/free-solid-svg-icons';
+import PhotographyPage from './views/photography/PhotographyPage';
 
 // pre-load FontAwesome icons for use in project
-library.add(faPlay, faPause, faBackward, faForward, faPeace);
+library.add(faPlay, faPause, faBackward, faForward, faPeace, faExpandArrowsAlt);
 
 class App extends Component {
 
@@ -39,6 +40,11 @@ class App extends Component {
             <Route path='/music/:lang(|es)?' render={() => (
                 <div className="App">
                   <Base content={ <MusicPage /> } />
+                </div>
+            )}/>
+            <Route path='/photography/:lang(|es)?' render={() => (
+                <div className="App">
+                  <Base content={ <PhotographyPage /> } />
                 </div>
             )}/>
           </div>

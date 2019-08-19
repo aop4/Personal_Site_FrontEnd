@@ -21,6 +21,7 @@ class Sidebar extends Component {
             new SidebarLink('Home', 'Inicio', '/', '/es'),
             new SidebarLink('Resume', 'Resumen', '/resume', '/resume/es'),
             new SidebarLink('Music', 'Música', '/music', '/music/es'),
+            new SidebarLink('Photos', 'Fotos', '/photography', '/photography/es'),
             new SidebarLink('Contact', 'Contáctame', '/contact', '/contact/es')
         ];
         this.state = {
@@ -48,7 +49,7 @@ class Sidebar extends Component {
         return (
             <ul>
                 {this.state.navLinks.map((linkData, index) => 
-                    <li key={ linkData.englishHref }>
+                    <li className="sidebar-link" key={ linkData.englishHref }>
                         <Link to={ this.getLinkFor(linkData) }
                             className={ this.isActiveNavLink(linkData) ? 'active-nav-link':'' }>
                             <If condition={this.props.lang === 'es'}>

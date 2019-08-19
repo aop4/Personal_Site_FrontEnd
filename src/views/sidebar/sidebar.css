@@ -6,7 +6,7 @@ ul {
     padding-right: 2em;
 }
 
-li {
+li.sidebar-link {
     padding: 0.5em;
     font-size: 1.2em;
 }
