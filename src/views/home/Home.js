@@ -28,30 +28,30 @@ export default class Home extends Component {
                     <p className="big-p">
                         <If condition={ this.props.lang === 'es' }>
                             <Then>
-                            ¡Hola! Soy un ingeniero de software quien vive en Pittsburgh, Pennsylvania. Me considero un generalista: he trabajado en el front-end y el back-end de sistemas diferentes, y tengo experiencia con una variedad de lenguas y entornos de trabajo. Me apasiona aprender cosas nuevas, y estoy un poco obsesionado con escribir código legible.
+                                ¡Hola! Este sitio se propone reflejar todos que hago—y nunca me contento con hacer solo una cosa. Soy un un ingeniero de software, pero también soy un escritor, músico, y ecologista.
                             </Then>
                             <Else>
-                                Hi there! I’m a software engineer based in Pittsburgh, Pennsylvania. I consider myself a generalist, with experience at both ends in a variety of languages and frameworks. I am passionate about learning new things and kind of obsessed with writing readable code.
+                                Hi there! This website is meant to reflect everything I do—and I was never content to do just one thing. I am a software engineer, but I am also a writer, musician, and environmental advocate based in Pittsburgh.
                             </Else>
                         </If>
                     </p>
                     <p className="big-p">
                         <If condition={ this.props.lang === 'es' }>
                             <Then>
-                                Puede contactarme si quiere crear un sitio web, una aplicación móvil, o algún otro proyecto técnico pero no sabe por dónde empezar. Me encantaría dar consejos y potencialmente trabajar con ud. en un proyecto pequeño, especialmente si no tiene muchos recursos y hace trabajo interesante.
+                                En cuanto a mi carrera de ingeniería, me considero un generalista: he trabajado en el front-end y el back-end de sistemas diferentes, y tengo experiencia con una variedad de lenguas y entornos de trabajo. Me apasiona aprender cosas nuevas, y estoy un poco obsesionado con escribir código legible.
                             </Then>
                             <Else>
-                                Feel free to reach out if you want to build a website, mobile app, or anything software-related but don’t know where to start. I'd love to offer input and potentially help with smaller projects, especially if you’re low on resources and doing cool work.
+                                Regarding my engineering career, I consider myself a generalist, with experience at both ends in a variety of languages and frameworks. I am passionate about learning new things and kind of obsessed with writing readable code.
                             </Else>
                         </If>
                     </p>
                     <p className="big-p">
                         <If condition={ this.props.lang === 'es' }>
                             <Then>
-                                También toco <Link to="/music/es">música</Link> para divertirme.
+                                Este sitio es un documento vivo. Existe para mostrar todo mi trabajo en un lugar, organizar ese trabajo, y desarrollar junto conmigo.
                             </Then>
                             <Else>
-                                I also make <Link to="/music">music</Link> for kicks.
+                                This site is very much a living document. It's here to tie all my work together, organize it, and develop alongside me. Go explore.
                             </Else>
                         </If>
                     </p>
