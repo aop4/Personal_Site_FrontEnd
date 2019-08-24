@@ -7,7 +7,7 @@ import { If, Then, Else } from 'react-if';
 export default class Home extends Component {
     render() {
         return (
-            <div className="home-container">
+            <div className="text-container">
                 <div className="img-container">
                     <img className="face" 
                         src="images/portrait.jpg"

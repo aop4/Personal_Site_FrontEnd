@@ -1,14 +1,5 @@
-.software-phil-list {
-    list-style-type: disc;
-    padding-bottom: 0;
-}
-
-.software-phil-list > li {
-    padding-bottom: 1em;
-}
-
 .software-container {
-    padding-left: 2em;
+    padding: 0 2em;
 }
 
 .github-icon {
@@ -19,4 +10,12 @@
 
 .github-icon:hover {
     color: #3369be;
+}
+
+.software-container > h2 {
+    font-size: 1em;
+}
+
+.software-page-break {
+    margin: 3em 0 1em 0;
 }
