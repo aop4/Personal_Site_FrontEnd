@@ -38,10 +38,10 @@ export default class Home extends Component {
                     <p className="big-p">
                         <If condition={ this.props.lang === 'es' }>
                             <Then>
-                                En cuanto a mi carrera de ingeniería, me considero un generalista: he trabajado en el front-end y el back-end de sistemas diferentes, y tengo experiencia con una variedad de lenguas y entornos de trabajo. Me apasiona aprender cosas nuevas, y estoy un poco obsesionado con escribir código legible.
+                                En cuanto a mi carrera de ingeniería, me considero un generalista: he trabajado en el front-end y el back-end de sistemas diferentes, y tengo experiencia con una variedad de lenguas y entornos de trabajo. Me apasiona aprender cosas nuevas, y estoy un poco obsesionado con escribir código legible. Mira a la página de <a href="/software">Software</a>.
                             </Then>
                             <Else>
-                                Regarding my engineering work, I consider myself a generalist, with experience at both ends in a variety of languages and frameworks. I am passionate about learning new things and kind of obsessed with writing readable code.
+                                Regarding my engineering work, I consider myself a generalist, with experience at both ends in a variety of languages and frameworks. I am passionate about learning new things and kind of obsessed with writing readable code. Check out the <a href="/software">Software</a> page for my thoughts on the craft.
                             </Else>
                         </If>
                     </p>
