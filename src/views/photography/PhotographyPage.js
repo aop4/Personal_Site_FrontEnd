@@ -5,7 +5,7 @@ import LoadingScreen from '../loading-screen/LoadingScreen';
 import Lightbox from 'react-image-lightbox';
 
 import 'react-image-lightbox/style.css';
-import './photography-page.css';
+import './photography-page.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default class PhotographyPage extends Component {
@@ -98,17 +98,28 @@ export default class PhotographyPage extends Component {
         return (
             <div className="photos-page">
                 <h1>{ this.props.lang === 'es' ? 'Fotos' : 'Photos' }</h1>
-                <div className={ "photos-container " + (this.state.didLoadPhotos ? "cursor-pointer":"") +
-                    (this.state.didLoadPhotos ? '' : 'hidden') }
-                    onClick={ () => this.showLightbox() }>
+                {/* in-page carousel */}
+                <div className={ "photos-container " + (this.state.didLoadPhotos ? '' : 'hidden') } >
                     <LoadingScreen ref={ this.loadingScreen }>
                     </LoadingScreen>
-                    <FontAwesomeIcon className={ "full-screen-icon" + (this.state.didLoadPhotos ? '' : 'hidden') }
-                        icon="expand-arrows-alt" />
-                    <img className="first-photo"
-                        src={ this.state.photos.length ? this.state.photos[0].url : '' }
-                        alt=''/>
+                    <div className="carousel">
+                        <FontAwesomeIcon icon="chevron-left"
+                            className="photo-select-arrow"
+                            onClick={ () => this.showPrevPhoto() } />
+                        <div className="img-container">
+                            <FontAwesomeIcon className={ "full-screen-icon cursor-pointer" + (this.state.didLoadPhotos ? '' : 'hidden') }
+                                icon="expand-arrows-alt"
+                                onClick={ () => this.showLightbox() } />
+                            <img className="curr-photo"
+                                src={ this.state.photos.length ? this.state.photos[this.state.currPhotoIndex].url : '' }
+                                alt=''/>
+                        </div>
+                        <FontAwesomeIcon icon="chevron-right"
+                            className="photo-select-arrow"
+                            onClick={ () => this.showNextPhoto() } />
+                    </div>
                 </div>
+                {/* full-page lightbox */}
                 { this.state.showLightbox && 
                     <Lightbox onCloseRequest={ () => this.hideLightbox() }
                         mainSrc={ this.state.photos[this.state.currPhotoIndex].url }
