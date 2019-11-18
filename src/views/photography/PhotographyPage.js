@@ -104,10 +104,10 @@ export default class PhotographyPage extends Component {
                     </LoadingScreen>
                     <div className="carousel">
                         <FontAwesomeIcon icon="chevron-left"
-                            className="photo-select-arrow"
+                            className={ "photo-select-arrow " + (this.state.didLoadPhotos ? '' : 'hidden') }
                             onClick={ () => this.showPrevPhoto() } />
                         <div className="img-container">
-                            <FontAwesomeIcon className={ "full-screen-icon cursor-pointer" + (this.state.didLoadPhotos ? '' : 'hidden') }
+                            <FontAwesomeIcon className={ "full-screen-icon cursor-pointer " + (this.state.didLoadPhotos ? '' : 'hidden') }
                                 icon="expand-arrows-alt"
                                 onClick={ () => this.showLightbox() } />
                             <img className="curr-photo"
@@ -115,7 +115,7 @@ export default class PhotographyPage extends Component {
                                 alt=''/>
                         </div>
                         <FontAwesomeIcon icon="chevron-right"
-                            className="photo-select-arrow"
+                            className={ "photo-select-arrow " + (this.state.didLoadPhotos ? '' : 'hidden') }
                             onClick={ () => this.showNextPhoto() } />
                     </div>
                 </div>

@@ -83,7 +83,7 @@ same color? So the icon changes color to ensure it's visible no matter what. */
     padding: 100px 5px; /* Make it easier to switch between photos */
 }
 
-.photo-select-arrow:hover, .photo-select-arrow:active {
+.photo-select-arrow:hover {
     background-color: #ddd;
 }
 
