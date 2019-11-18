@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import './software-page.css';
+import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithubSquare } from '@fortawesome/free-brands-svg-icons'
+import { faGithubSquare } from '@fortawesome/free-brands-svg-icons';
+import { BASE_URL } from '../../constants';
+import './software-page.css';
 
 export default class SoftwarePage extends Component {
     render() {
@@ -48,7 +50,7 @@ export default class SoftwarePage extends Component {
                 <p>One summer, alongside the programming I did at the lab, I taught myself Java. I wanted to expand my horizons and test my ability to learn independently. That summer, seeing what I could accomplish, I became hooked on programming. It felt like breathing life into a machine.</p>
                 <p>Since then, I have focused on web development and to a lesser extent on mobile development. Whether I'm contributing to the front end or back end (I enjoy full stack development most), I find it extremely exciting to make something people will actually interact with.</p>
                 <p>I am also interested in human-computer interaction and the broader effects of technology on society. Ultimately, I want to use technology to make the world a better place. By no means do I view tech as a panacea that will solve all of our problems. But I think it can effect positive change when designed and used with pure intentions.</p>
-                <p>I do not have a portfolio of my own work at the moment, but a lot of it can be found on GitHub.</p>
+                <p>I do not have a portfolio of my own work at the moment, but a lot of it can be found on GitHub:</p>
                 <div className="center">
                     <a href="https://github.com/aop4"
                         title="Follow the Octocat (GitHub)">
@@ -59,4 +61,15 @@ export default class SoftwarePage extends Component {
             </div>
         );
     }
+
+    /**
+     * After the page loads, this sends a request to the base URL. (To conserve
+     * resources, the back end sleeps when there's no traffic. This wakes it up
+     * so that other pages will load quickly, because this may be a common
+     * entrypoint to the site.)
+     */
+    componentDidMount() {
+        axios.get(BASE_URL);
+    }
+
 }
