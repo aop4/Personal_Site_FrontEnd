@@ -28,10 +28,10 @@ export default class Home extends Component {
                     <p className="big-p">
                         <If condition={ this.props.lang === 'es' }>
                             <Then>
-                                ¡Hola! Este sitio se propone reflejar todos que hago—y nunca me contento con hacer solo una cosa. Soy un un ingeniero de software, pero también soy un escritor, músico, y ecologista.
+                                ¡Hola! Soy un ingeniero de software y ecologista que vive en Pittsburgh, Pennsylvania. También disfruto escribir prosa y música, y este sitio refleja un poco de todo.
                             </Then>
                             <Else>
-                                Hi there! This website is meant to reflect everything I do—and I was never content to do just one thing. I am a software engineer, but I am also a writer, musician, and environmental advocate.
+                                Hi there! I am a software engineer and environmental advocate based in Pittsburgh, Pennsylvania. I also enjoy writing prose and music, and this website reflects a bit of everything.
                             </Else>
                         </If>
                     </p>
