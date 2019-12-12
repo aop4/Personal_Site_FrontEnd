@@ -11,3 +11,22 @@
     margin: 0.5em 0;
     font-size: 1em;
 }
+
+.song-selector {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.download-button {
+    color: #888;
+    cursor: pointer;
+}
+
+.song-downloaded-checkmark {
+    color: #080;
+}
+
+.song-downloaded-checkmark, .download-button {
+    margin-left: 1em;
+}

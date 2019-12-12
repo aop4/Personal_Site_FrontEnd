@@ -24,7 +24,7 @@ export default class Resume extends Component {
                         height: '90vh'
                     } }
                     title="file"
-                    src='/AndrewPuglionesiResume.pdf' />
+                    src='/resume.pdf' />
             </div>
         );
     }

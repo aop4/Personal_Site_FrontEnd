@@ -9,13 +9,13 @@ import Footer from './views/footer/Footer';
 import MusicPage from './views/music-page/MusicPage';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPlay, faPause, faBackward, faForward, faPeace, faExpandArrowsAlt,
-  faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+  faChevronLeft, faChevronRight, faDownload, faCheck } from '@fortawesome/free-solid-svg-icons';
 import PhotographyPage from './views/photography/PhotographyPage';
 import SoftwarePage from './views/software/SoftwarePage';
 
 // pre-load FontAwesome icons for use in project
 library.add(faPlay, faPause, faBackward, faForward, faPeace, faExpandArrowsAlt,
-  faChevronLeft, faChevronRight);
+  faChevronLeft, faChevronRight, faDownload, faCheck);
 
 class App extends Component {
 
