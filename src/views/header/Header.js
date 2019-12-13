@@ -52,8 +52,9 @@ class BaseComponent extends Component {
                 </Menu>
                 <Link className="lang-toggle" 
                     to={ this.changeLanguageLink() }
-                    onClick={ this.props.changeLanguage }>
-                    { this.props.otherLang === 'es' ? 'Español' : 'English' }
+                    onClick={ this.props.changeLanguage }
+                    title={ this.props.lang === 'es' ? 'Cambiar de lengua' : 'Change language' } >
+                    { this.props.lang === 'en' ? 'Español' : 'English' }
                 </Link>
             </div>
         );

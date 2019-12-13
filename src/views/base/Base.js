@@ -9,22 +9,20 @@ class BaseComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            lang: "en",
-            otherLang: "es"
+            lang: "en"
         };
         // if the page is in Spanish ('/es' is at end of URL as a parameter)
         if (this.props.match.params.lang === 'es') {
             this.state.lang = "es";
-            this.state.otherLang = "en";
         }
     }
 
     /* Used to update the language when the content component is not changed
     but the URL language parameter is changed (e.g. from '/' to '/es') */
     changeLanguage() {
+        let newLanguage = this.state.lang === 'en' ? 'es' : 'en';
         this.setState({
-            lang: this.state.otherLang,
-            otherLang: this.state.lang
+            lang: newLanguage
         });
     }
     
@@ -33,7 +31,6 @@ class BaseComponent extends Component {
             <div>
                 <div className="main-container">
                     <Header lang={ this.state.lang }
-                        otherLang={ this.state.otherLang }
                         changeLanguage={ this.changeLanguage.bind(this) }/>
                     <div className="flex-container">
                         <div className="sidebar">

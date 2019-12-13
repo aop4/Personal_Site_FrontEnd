@@ -105,18 +105,21 @@ export default class PhotographyPage extends Component {
                     <div className="carousel">
                         <FontAwesomeIcon icon="chevron-left"
                             className={ "photo-select-arrow " + (this.state.didLoadPhotos ? '' : 'hidden') }
-                            onClick={ () => this.showPrevPhoto() } />
+                            onClick={ () => this.showPrevPhoto() }
+                            title="Previous photo" />
                         <div className="img-container">
                             <FontAwesomeIcon className={ "full-screen-icon cursor-pointer " + (this.state.didLoadPhotos ? '' : 'hidden') }
                                 icon="expand-arrows-alt"
-                                onClick={ () => this.showLightbox() } />
+                                onClick={ () => this.showLightbox() }
+                                title="Full screen" />
                             <img className="curr-photo"
                                 src={ this.state.photos.length ? this.state.photos[this.state.currPhotoIndex].url : '' }
                                 alt=''/>
                         </div>
                         <FontAwesomeIcon icon="chevron-right"
                             className={ "photo-select-arrow " + (this.state.didLoadPhotos ? '' : 'hidden') }
-                            onClick={ () => this.showNextPhoto() } />
+                            onClick={ () => this.showNextPhoto() }
+                            title="Next photo" />
                     </div>
                 </div>
                 {/* full-page lightbox */}
