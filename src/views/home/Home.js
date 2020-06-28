@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import News from '../news/News'
 import './home.css';
-import { Link } from 'react-router-dom';
 import { If, Then, Else } from 'react-if';
 
 export default class Home extends Component {
