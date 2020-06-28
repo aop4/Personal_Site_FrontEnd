@@ -119,7 +119,8 @@ export default class MusicPage extends Component {
                             ref={ this.musicPlayer }
                             currentSong={ this.state.currentSong }
                             playNextSong={ () => this.playNextSong() }
-                            playPrevSong={ () => this.playPrevSong() } />
+                            playPrevSong={ () => this.playPrevSong() }
+                            updatePlayCount={ () => this.updatePlayCount(this.state.currentSong, this.state.currentAlbum) } />
                         <LoadingScreen ref={ this.loadingScreen } />
                         {this.state.currentAlbum.songs.map((song, index) =>
                             <SongSelector song={ song }

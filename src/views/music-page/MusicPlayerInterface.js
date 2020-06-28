@@ -36,6 +36,12 @@ export default class MusicPlayerInterface extends Component {
             this.pause();
         }
         else {
+            // If the user hit the play button and the current song hasn't been
+            // started yet, then update the play count (this is for the first
+            // play of the first song if triggered via the Play button)
+            if (this.state.fractionPlayed === 0) {
+                this.props.updatePlayCount();
+            }
             this.resume();
         }
     }
