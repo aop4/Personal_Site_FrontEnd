@@ -6,6 +6,7 @@ import './music-page.css';
 import { BASE_URL } from '../../constants';
 import LoadingScreen from '../loading-screen/LoadingScreen';
 import { If, Then } from 'react-if';
+import renderHTML from 'react-render-html';
 
 export default class MusicPage extends Component {
 
@@ -33,6 +34,7 @@ export default class MusicPage extends Component {
             // set the current album to the first album and the current song
             // to the first song
             let albums = resp.data;
+            this.renderAlbumDescriptions(albums);
             this.setState({
                 albums: albums,
                 currentAlbum: albums[0],
@@ -40,6 +42,13 @@ export default class MusicPage extends Component {
             });
         }, (err) => {
             this.loadingScreen.current.onLoadingFailed();
+        });
+    }
+
+    renderAlbumDescriptions(albums) {
+        albums.forEach(album => {
+            album.description = renderHTML(album.description);
+            album.spanish_desc = renderHTML(album.spanish_desc);
         });
     }
 
@@ -105,7 +114,9 @@ export default class MusicPage extends Component {
                     </button>
                 )}
                 <div className="album-container">
-                    <p>{ this.props.lang === 'es' ? this.state.currentAlbum.spanish_desc : this.state.currentAlbum.description }</p>
+                    <p>
+                        { this.props.lang === 'es' && this.state.currentAlbum.spanish_desc.length > 0 ? this.state.currentAlbum.spanish_desc : this.state.currentAlbum.description }
+                    </p>
                     <If condition={ this.state.currentAlbum.album_art_path !== ''
                         && this.state.currentAlbum.album_art_path !== undefined }>
                         <Then>
