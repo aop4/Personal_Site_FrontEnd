@@ -1,13 +1,24 @@
-.music-player > button {
+.player-controls > button {
     color: #333;
     font-size: 1.3em;
-    margin: 1.3em 0.7em 2em 0.7em;
+    margin: 1.3em 0em 2em 0em;
 }
 
-.music-player > button:hover {
+.player-controls {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 200px;
+    align-self: center;
+}
+
+.player-controls > button:hover {
     color: #222;
 }
 
 .music-player {
     padding-top: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
