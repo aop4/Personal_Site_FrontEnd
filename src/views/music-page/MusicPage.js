@@ -47,8 +47,12 @@ export default class MusicPage extends Component {
 
     renderAlbumDescriptions(albums) {
         albums.forEach(album => {
-            album.description = renderHTML(album.description);
-            album.spanish_desc = renderHTML(album.spanish_desc);
+            if (album.description) {
+                album.description = renderHTML(album.description);
+            }
+            if (album.spanish_desc) {
+                album.spanish_desc = renderHTML(album.spanish_desc);
+            }
         });
     }
 
@@ -115,7 +119,7 @@ export default class MusicPage extends Component {
                 )}
                 <div className="album-container">
                     <p>
-                        { this.props.lang === 'es' && this.state.currentAlbum.spanish_desc.length > 0 ? this.state.currentAlbum.spanish_desc : this.state.currentAlbum.description }
+                        { this.props.lang === 'es' ? this.state.currentAlbum.spanish_desc : this.state.currentAlbum.description }
                     </p>
                     <If condition={ this.state.currentAlbum.album_art_path !== ''
                         && this.state.currentAlbum.album_art_path !== undefined }>
