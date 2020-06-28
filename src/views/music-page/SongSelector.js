@@ -4,6 +4,7 @@ import {SlideDown} from 'react-slidedown';
 import Downloader from 'js-file-downloader';
 import renderHTML from 'react-render-html';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import axios from 'axios';
 import 'react-slidedown/lib/slidedown.css';
 import './song-selector.css';
 
@@ -33,7 +34,16 @@ export default class SongSelector extends Component {
             this.setState({
                 wasDownloaded: true
             });
+            this.updateDownloadCount(song, this.props.currentAlbum);
         });
+    }
+
+    /**
+     * Increments the download count of `song` in the database
+     */
+    updateDownloadCount(song, album) {
+        let url = `${BASE_URL}/albums/${album.id}/songs/${song.id}`;
+        axios.patch(url, {download_count: 1});
     }
 
     render() {

@@ -43,9 +43,10 @@ export default class MusicPage extends Component {
         });
     }
 
-    /* Updates the play count of `song` in the database */
+    /* Increments the play count of `song` in the database */
     updatePlayCount(song, album) {
-        axios.patch(BASE_URL + '/albums/' + album.id + '/songs/' + song.id);
+        let url = `${BASE_URL}/albums/${album.id}/songs/${song.id}`;
+        axios.patch(url, {play_count: 1});
     }
 
     /* Returns true if index is not a valid index for this.currentAlbum.songs
@@ -124,7 +125,8 @@ export default class MusicPage extends Component {
                             <SongSelector song={ song }
                                 playSong={ () => this.playSong(index) }
                                 key={ song.id }
-                                currentSong={ this.state.currentSong } />
+                                currentSong={ this.state.currentSong }
+                                currentAlbum={ this.state.currentAlbum } />
                         )}
                     </div>
                 </div>
