@@ -110,6 +110,7 @@ export default class MusicPage extends Component {
         return (
             <div className="music-container">
                 <h1>{ this.props.lang === 'es' ? 'Álbumes':'Albums' }</h1>
+                <p>If you've been following the music I publish here, you may also like the music I make as <a href="https://bloomcliffe.bandcamp.com">Bloomcliffe</a>.</p>
                 {this.state.albums.map((album) =>
                     <button key={ album.id }
                         onClick={ () => this.setCurrentAlbum(album) }
