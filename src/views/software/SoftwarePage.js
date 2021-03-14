@@ -41,16 +41,16 @@ export default class SoftwarePage extends Component {
                 <p>If it's not a pet project, your software plays a real role in a very real world. We've seen what happens when the people building software refuse to address its impact. Planes crash. A patient gets the wrong medication. People's privacy is violated. Whatever their role, the people behind a piece of software need to remember its place in the world and act with that in mind.</p>
 
                 <h2>Most software is a work in progress, just like this page.</h2>
-                <p>If software is good, someone somewhere is going to ask you to make it better.</p>
+                <p>If software is good, someone somewhere is going to ask you to make it better. Sometimes it happens in the middle of the development process, and sometimes it happens shortly before a release. In a truly agile process, we give the customer time and space to provide feedback, and we iterate on our design and implementation to satisfy their needs.</p>
 
                 <hr className="software-page-break" />
 
                 <h2>About me</h2>
                 <p>I came into tech with an unusual perspective: I had been training to become a neuroscientist. My first experience was with a biological model that ran on supercomputers, and I started without any formal training in computer science.</p>
-                <p>One summer, alongside the programming I did at the lab, I taught myself Java. I wanted to expand my horizons and test my ability to learn independently. That summer, seeing what I could accomplish, I became hooked on programming. It felt like breathing life into a machine.</p>
-                <p>Since then, I have focused on web development and to a lesser extent on mobile development. Whether I'm contributing to the front end or back end (I enjoy full stack development most), I find it extremely exciting to make something people will actually interact with.</p>
+                <p>One summer, alongside the programming I did at the lab, I taught myself Java. I wanted to expand my horizons and test my ability to learn independently. That summer, seeing what I could accomplish, I became hooked on programming. It felt like breathing life into a machine. So I followed my heart. I changed my college major, and two and a half years later, I graduated with a B.S. in computer science.</p>
+                <p>I have focused primarily on web development and to a lesser extent on mobile development. Whether I'm contributing to the front end or back end (I enjoy full stack development most), I find it extremely exciting to make something people will interact with.</p>
                 <p>I am also interested in human-computer interaction and the broader effects of technology on society. Ultimately, I want to use technology to make the world a better place. By no means do I view tech as a panacea that will solve all of our problems. But I think it can effect positive change when designed and used with pure intentions.</p>
-                <p>I do not have a portfolio of my own work at the moment, but a lot of it can be found on GitHub:</p>
+                <p>I do not have a portfolio of my own work at the moment, but some of it can be found on GitHub:</p>
                 <div className="center">
                     <a href="https://github.com/aop4"
                         title="Follow the Octocat (GitHub)">
