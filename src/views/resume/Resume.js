@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import { BASE_URL } from '../../constants';
 
 export default class Resume extends Component {
     
-    /* This looks too creative, but I don't even know how long I spent trying
-    to do something normal. Resizes the PDF iframe so its height actually matches
-    the PDF inside of it. I can think of some new features for HTML6... */
+    /* Resizes the PDF iframe so its height matches the PDF inside of it. */
     resizeIframe(event) {
         const pdfHeightWidthRatio = 11 / 8.5; // height:width ratio for one-page pdf
         let iframe = event.target;
@@ -27,5 +27,15 @@ export default class Resume extends Component {
                     src='/resume.pdf' />
             </div>
         );
+    }
+
+    /**
+     * After the page loads, this sends a request to the base URL. (To conserve
+     * resources, the back end sleeps when there's no traffic. This wakes it up
+     * so that other pages will load quickly, because this may be a common
+     * entrypoint to the site.)
+     */
+    componentDidMount() {
+        axios.get(BASE_URL);
     }
 }
