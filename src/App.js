@@ -9,13 +9,18 @@ import Footer from './views/footer/Footer';
 import MusicPage from './views/music-page/MusicPage';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPlay, faPause, faBackward, faForward, faPeace, faExpandArrowsAlt,
-  faChevronLeft, faChevronRight, faDownload, faCheck } from '@fortawesome/free-solid-svg-icons';
+  faChevronLeft, faChevronRight, faDownload, faCheck, faBabyCarriage, faBriefcase,
+  faCalculator, faSeedling, faBrain, faMicroscope, faDesktop, faCodeBranch,
+  faRocket, faCode, faMobileAlt, faMortarPestle, faMap, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import PhotographyPage from './views/photography/PhotographyPage';
 import SoftwarePage from './views/software/SoftwarePage';
+import BiographyPage from './views/biography/BiographyPage';
 
 // pre-load FontAwesome icons for use in project
 library.add(faPlay, faPause, faBackward, faForward, faPeace, faExpandArrowsAlt,
-  faChevronLeft, faChevronRight, faDownload, faCheck);
+  faChevronLeft, faChevronRight, faDownload, faCheck, faBabyCarriage, faBriefcase,
+  faCalculator, faSeedling, faBrain, faMicroscope, faCodeBranch, faDesktop,
+  faRocket, faCode, faMobileAlt, faMortarPestle, faMap, faEllipsisV);
 
 class App extends Component {
 
@@ -53,6 +58,11 @@ class App extends Component {
             <Route path='/software/:lang(|es)?' render={() => (
                 <div className="App">
                   <Base content={ <SoftwarePage /> } />
+                </div>
+            )}/>
+            <Route path='/biography/:lang(|es)?' render={() => (
+                <div className="App">
+                  <Base content={ <BiographyPage /> } />
                 </div>
             )}/>
           </div>

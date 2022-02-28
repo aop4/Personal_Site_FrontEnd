@@ -20,6 +20,7 @@ class Sidebar extends Component {
         let navLinks = [
             new SidebarLink('Home', 'Inicio', '/', '/es'),
             new SidebarLink('Resume', 'Resumen', '/resume', '/resume/es'),
+            new SidebarLink('Biography', 'Biografía', '/biography', '/biography/es'),
             new SidebarLink('Software', 'Software', '/software', '/software/es'),
             new SidebarLink('Music', 'Música', '/music', '/music/es'),
             // new SidebarLink('Photos', 'Fotos', '/photography', '/photography/es'),

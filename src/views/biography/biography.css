@@ -1,0 +1,31 @@
+.bio-container {
+    padding-top: 5vh;
+    width: 85%;
+    margin: auto;
+    max-width: 500px;
+}
+
+.biography-entry {
+    text-align: center;
+}
+
+.biography-entry-year {
+    font-size: 2.2em;
+}
+
+.biography-entry-text {
+    color: #000;
+    font-size: 1.25em;
+}
+
+.biography-entry-icon {
+    font-size: 8em;
+    color: #1941a6;
+}
+
+.bio-entry-separator {
+    font-size: 3.3em;
+    padding: 1em 0;
+    color: #37474f;
+    opacity: 0.5;
+}
