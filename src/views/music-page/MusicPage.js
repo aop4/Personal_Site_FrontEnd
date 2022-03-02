@@ -62,17 +62,19 @@ export default class MusicPage extends Component {
         axios.patch(url, {play_count: 1});
     }
 
-    /* Returns true if index is not a valid index for this.currentAlbum.songs
-    (i.e., if the index doesn't correspond to a song). */
-    invalidSongIndex(index) {
-        return (index < 0 || index >= this.state.currentAlbum.songs.length);
-    }
-
-    /* Attempts to play the indexth song of this.currentAlbum.songs.
-    If index is out of bounds, nothing happens. */
+    /**
+     * Attempts to play the indexth song of currentAlbum.songs.
+     * If index is negative, nothing happens. If index is too large for the album,
+     * that indicates the last track has ended, and so the music player is reset.
+     */
     playSong(index) {
-        if (this.invalidSongIndex(index)) {
-            console.log("Invalid song index");
+        if (index < 0) {
+            return;
+        }
+        if (index >= this.state.currentAlbum.songs.length) {
+            // we have passed the last song in the album, so reset the music player
+            // in case the user presses play again
+            this.resetPlayer();
             return;
         }
         let song = this.state.currentAlbum.songs[index];
@@ -84,6 +86,17 @@ export default class MusicPage extends Component {
         this.updatePlayCount(song, this.state.currentAlbum);
     }
 
+    /**
+     * Handles a song skip triggered by the user clicking the skip-forward button.
+     */
+    handleSongSkip() {
+        // ignore song skips at the last song. If playSong() were called, it would
+        // cause the music player to reset and playback to halt.
+        if (this.state.currentSongIndex < this.state.currentAlbum.songs.length - 1) {
+            this.playNextSong();
+        }
+    }
+
     playNextSong() {
         this.playSongOffsetN(1);
     }
@@ -92,18 +105,37 @@ export default class MusicPage extends Component {
         this.playSongOffsetN(-1);
     }
 
-    /* Attempts to play the song that is n songs from this.currentSong in
-    this.currentAlbum.songs. If n is positive, it will attempt to play the
-    song n songs ahead of this.currentSong. Else it will attempt to play
-    the song n songs behind the current song. If this.currentSongIndex + n is 
-    out of bounds, nothing happens. */
+    /**
+     * Attempts to play the song that is n songs from this.currentSong in
+     * this.currentAlbum.songs. If n is positive, it will attempt to play the
+     * song n songs ahead of this.currentSong. Else it will attempt to play
+     * the song n songs behind the current song.
+     */
     playSongOffsetN(n) {
         let nextSongIndex = this.state.currentSongIndex + n;
         this.playSong(nextSongIndex);
     }
 
+    /**
+     * Sets the current album and resets the audio player if the selected album has changed.
+     */
     setCurrentAlbum(album) {
-        this.setState({ currentAlbum: album });
+        if (album !== this.state.currentAlbum) {
+            this.setState({ currentAlbum: album }, this.resetPlayer);
+        }
+    }
+
+    /**
+     * Halts the music player and resets the current song to the first song in the
+     * current album.
+     */
+    resetPlayer() {
+        this.musicPlayer.current.pause();
+        let queuedSong = this.state.currentAlbum.songs[0];
+        this.setState({
+            currentSong: queuedSong,
+            currentSongIndex: 0
+        });
     }
 
     render() {
@@ -135,6 +167,7 @@ export default class MusicPage extends Component {
                             ref={ this.musicPlayer }
                             currentSong={ this.state.currentSong }
                             playNextSong={ () => this.playNextSong() }
+                            handleSongSkip={ () => this.handleSongSkip() }
                             playPrevSong={ () => this.playPrevSong() }
                             updatePlayCount={ () => this.updatePlayCount(this.state.currentSong, this.state.currentAlbum) } />
                         <LoadingScreen ref={ this.loadingScreen } />

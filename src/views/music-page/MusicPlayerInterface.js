@@ -99,7 +99,7 @@ export default class MusicPlayerInterface extends Component {
                             <Else><FontAwesomeIcon icon="play" /></Else>
                         </If>
                     </button>
-                    <button onClick={ () => this.props.playNextSong() }>
+                    <button onClick={ () => this.props.handleSongSkip() }>
                         <FontAwesomeIcon icon="forward" />
                     </button>
                 </div>
