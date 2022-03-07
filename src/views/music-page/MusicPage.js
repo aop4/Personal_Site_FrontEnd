@@ -5,7 +5,7 @@ import SongSelector from './SongSelector';
 import './music-page.css';
 import { BASE_URL } from '../../constants';
 import LoadingScreen from '../loading-screen/LoadingScreen';
-import { If, Then } from 'react-if';
+import { If, Then, Else } from 'react-if';
 import renderHTML from 'react-render-html';
 
 export default class MusicPage extends Component {
@@ -142,7 +142,14 @@ export default class MusicPage extends Component {
         return (
             <div className="music-container">
                 <h1>{ this.props.lang === 'es' ? 'Álbumes':'Albums' }</h1>
-                <p>I write and record music for kicks. You may also like the songs I write as <a href="https://bloomcliffe.bandcamp.com">Bloomcliffe</a>.</p>
+                <If condition={ this.props.lang === 'es' }>
+                    <Then>
+                        <p>Escribo y grabo canciones para divertirme. Si le gustan éstas, es posible que disfrute de escuchar a <a href="https://bloomcliffe.bandcamp.com">Bloomcliffe</a>.</p>
+                    </Then>
+                    <Else>
+                        <p>I write and record music for kicks. You may also like the songs I write as <a href="https://bloomcliffe.bandcamp.com">Bloomcliffe</a>.</p>
+                    </Else>
+                </If>
                 {this.state.albums.map((album) =>
                     <button key={ album.id }
                         onClick={ () => this.setCurrentAlbum(album) }
@@ -154,30 +161,32 @@ export default class MusicPage extends Component {
                     <p>
                         { this.props.lang === 'es' ? this.state.currentAlbum.spanish_desc : this.state.currentAlbum.description }
                     </p>
-                    <If condition={ this.state.currentAlbum.album_art_path !== ''
-                        && this.state.currentAlbum.album_art_path !== undefined }>
-                        <Then>
-                            <img className="album-cover"
-                                src={ BASE_URL + this.state.currentAlbum.album_art_path }
-                                alt="" />
-                        </Then>
-                    </If>
-                    <div className="controls-container">
-                        <MusicPlayerInterface
-                            ref={ this.musicPlayer }
-                            currentSong={ this.state.currentSong }
-                            playNextSong={ () => this.playNextSong() }
-                            handleSongSkip={ () => this.handleSongSkip() }
-                            playPrevSong={ () => this.playPrevSong() }
-                            updatePlayCount={ () => this.updatePlayCount(this.state.currentSong, this.state.currentAlbum) } />
-                        <LoadingScreen ref={ this.loadingScreen } />
-                        {this.state.currentAlbum.songs.map((song, index) =>
-                            <SongSelector song={ song }
-                                playSong={ () => this.playSong(index) }
-                                key={ song.id }
+                    <div className="image-and-controls">
+                        <If condition={ this.state.currentAlbum.album_art_path !== ''
+                            && this.state.currentAlbum.album_art_path !== undefined }>
+                            <Then>
+                                <img className="album-cover"
+                                    src={ BASE_URL + this.state.currentAlbum.album_art_path }
+                                    alt="" />
+                            </Then>
+                        </If>
+                        <div className="controls-container">
+                            <MusicPlayerInterface
+                                ref={ this.musicPlayer }
                                 currentSong={ this.state.currentSong }
-                                currentAlbum={ this.state.currentAlbum } />
-                        )}
+                                playNextSong={ () => this.playNextSong() }
+                                handleSongSkip={ () => this.handleSongSkip() }
+                                playPrevSong={ () => this.playPrevSong() }
+                                updatePlayCount={ () => this.updatePlayCount(this.state.currentSong, this.state.currentAlbum) } />
+                            <LoadingScreen ref={ this.loadingScreen } />
+                            {this.state.currentAlbum.songs.map((song, index) =>
+                                <SongSelector song={ song }
+                                    playSong={ () => this.playSong(index) }
+                                    key={ song.id }
+                                    currentSong={ this.state.currentSong }
+                                    currentAlbum={ this.state.currentAlbum } />
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>

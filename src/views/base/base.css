@@ -13,6 +13,7 @@ div.sidebar {
 
 .content {
     width: 95%;
+    margin: auto;
 }
 
 .text-container {

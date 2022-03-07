@@ -4,16 +4,16 @@
     margin: 1.3em 0em 2em 0em;
 }
 
+.player-controls > button:hover {
+    color: #000;
+}
+
 .player-controls {
     display: flex;
     justify-content: space-between;
     width: 100%;
     max-width: 200px;
     align-self: center;
-}
-
-.player-controls > button:hover {
-    color: #222;
 }
 
 .music-player {

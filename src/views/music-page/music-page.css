@@ -1,24 +1,28 @@
 .music-container {
-    padding-left: 2em;
+    padding-bottom: 3em;
 }
 
 .album-cover {
-    height: 200px;
+    width: 300px;
+    max-width: 90%;
     display: block;
     margin: auto;
 }
 
 /* Center controls and tracks on mobile device/small tablet */
 @media only screen and (max-width: 899px) {
-    .controls-container {
+    .album-container {
         margin: auto;
     }
 }
 
 /* Move controls and tracks a bit to the right on a large screen */
 @media only screen and (min-width: 900px) {
-    .controls-container {
-        margin-left: 5em;
+    .image-and-controls {
+        margin-left: 2em;
+    }
+    .music-container {
+        padding-left: 2em;
     }
 }
 

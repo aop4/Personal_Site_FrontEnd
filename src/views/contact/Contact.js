@@ -36,9 +36,9 @@ export default class Contact extends Component {
     render() {
         return (
             <div className="contact-container">
+                <h1>{ this.props.lang === 'es' ? 'Contáctame' : 'Contact me'}</h1>
                 <form id="contact-form"
                     onSubmit={ (event) => this.handleSubmit(event) }>
-                    <h1>{ this.props.lang === 'es' ? 'Contáctame' : 'Contact me'}</h1>
                     <input required type="text" 
                         name="name"
                         placeholder={ this.props.lang === 'es' ? "  Su nombre" : "  Your name" }/>

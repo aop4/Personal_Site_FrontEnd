@@ -1,20 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
-html, body, .site-page {
-  min-height: 80vh;
-}
-
-body {
+/*
+  A flex container to push the footer to the bottom of the screen even if the page
+  contents does not extend that far
+*/
+.footer-pusher {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .expand {
   flex: 1 0 auto;
-}
-
-.footer {
-  flex-shrink: 0;
 }
 
 .hidden {
@@ -49,6 +47,10 @@ button::-moz-focus-inner {
 
 h1, h2, h3, h4, h5, h6, p, a, textarea {
   font-family: 'Roboto', sans-serif;
+}
+
+p {
+    color: #616161;
 }
 
 .center {
