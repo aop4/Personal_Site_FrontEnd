@@ -167,7 +167,7 @@ export default class MusicPage extends Component {
                             <Then>
                                 <img className="album-cover"
                                     src={ BASE_URL + this.state.currentAlbum.album_art_path }
-                                    alt="" />
+                                    alt="Album Artwork" />
                             </Then>
                         </If>
                         <div className="controls-container">

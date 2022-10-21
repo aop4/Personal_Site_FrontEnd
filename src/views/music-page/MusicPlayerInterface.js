@@ -90,16 +90,16 @@ export default class MusicPlayerInterface extends Component {
                     railStyle={ {background: '#ddd'} }
                     trackStyle={ {background: '#4a86e8'} }/>
                 <div className="player-controls">
-                    <button onClick={ () => this.props.playPrevSong() }>
+                    <button aria-label="Play Previous Song" onClick={ () => this.props.playPrevSong() }>
                         <FontAwesomeIcon icon="backward" />
                     </button>
-                    <button onClick={ () => this.handlePlayPauseBtnClick() }>
+                    <button aria-label="Play or Pause Audio" onClick={ () => this.handlePlayPauseBtnClick() }>
                         <If condition={ this.state.playing }>
                             <Then><FontAwesomeIcon icon="pause" /></Then>
                             <Else><FontAwesomeIcon icon="play" /></Else>
                         </If>
                     </button>
-                    <button onClick={ () => this.props.handleSongSkip() }>
+                    <button aria-label="Play Next Song" onClick={ () => this.props.handleSongSkip() }>
                         <FontAwesomeIcon icon="forward" />
                     </button>
                 </div>

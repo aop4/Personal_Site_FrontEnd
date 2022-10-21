@@ -23,10 +23,16 @@
 button {
   background: none;
   border: none;
-  color: #4a86e8;
   cursor: pointer;
   text-align: left;
-  outline: none;
+}
+
+button, a {
+  color: #0473e1;
+}
+
+a {
+  cursor: pointer;
 }
 
 button::-moz-focus-inner {
@@ -50,7 +56,7 @@ h1, h2, h3, h4, h5, h6, p, a, textarea {
 }
 
 p {
-    color: #616161;
+    color: #333;
 }
 
 .center {
@@ -78,11 +84,6 @@ p {
 
 .App-link {
   color: #61dafb;
-}
-
-a {
-  cursor: pointer;
-  color: #4a86e8;
 }
 
 .active-link {

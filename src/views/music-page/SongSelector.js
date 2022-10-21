@@ -64,10 +64,12 @@ export default class SongSelector extends Component {
                         </If>
                         <If condition={ !this.state.wasDownloaded }>
                             <Then>
-                                <FontAwesomeIcon icon="download"
-                                    onClick={ () => this.downloadSong(this.props.song) }
-                                    title= { 'Download ' + this.props.song.title }
-                                    className="download-button" />
+                                <button aria-label="Download Song"
+                                        onClick={ () => this.downloadSong(this.props.song) }
+                                        title= { 'Download ' + this.props.song.title }
+                                        className="download-button">
+                                    <FontAwesomeIcon icon="download"/>
+                                </button>
                             </Then>
                             <Else>
                                 <FontAwesomeIcon icon="check" 

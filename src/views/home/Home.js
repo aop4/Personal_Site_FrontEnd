@@ -10,7 +10,7 @@ export default class Home extends Component {
                 <div className="img-container">
                     <img className="face" 
                         src="images/portrait.jpg"
-                        alt="" />
+                        alt="Portrait" />
                     <div className="inline-block">
                         <div className="name">
                             <h1 className="name">Andrew Puglionesi</h1>

@@ -1,5 +1,4 @@
 .page-select-button {
-    background-color: #ddd;
     border-radius: 3px;
     width: 2em;
     height: 2em;
@@ -8,10 +7,9 @@
 }
 
 .page-select-button:hover:not(.page-select-button-active) {
-    background-color: #fff;
-    transform: translateY(-0.2em);
+    background-color: #fafafa;
 }
 
 .page-select-button-active {
-    background-color: #aaa;
+    background-color: #eee;
 }
