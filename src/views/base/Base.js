@@ -18,11 +18,18 @@ class BaseComponent extends Component {
     }
 
     componentDidMount() {
-        if (this.props.title) {
-            document.title = this.props.title;
-        } else {
-            document.title = 'Andrew Puglionesi';
+        this.setTitle();
+    }
+
+    componentDidUpdate(prevProps) {
+        // Change the document title when switching between pages
+        if (prevProps.title !== this.props.title) {
+            this.setTitle();
         }
+    }
+
+    setTitle() {
+        document.title = (this.props.title ? this.props.title : 'Andrew Puglionesi');
     }
 
     /* Used to update the language when the content component is not changed

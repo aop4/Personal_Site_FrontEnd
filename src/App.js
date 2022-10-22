@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {BrowserRouter, Route} from 'react-router-dom';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Base from './views/base/Base';
 import Resume from './views/resume/Resume';
 import Home from './views/home/Home';
@@ -11,16 +11,17 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPlay, faPause, faBackward, faForward, faPeace, faExpandArrowsAlt,
   faChevronLeft, faChevronRight, faDownload, faCheck, faBabyCarriage, faBriefcase,
   faCalculator, faSeedling, faBrain, faMicroscope, faDesktop, faCodeBranch,
-  faRocket, faCode, faMobileAlt, faMortarPestle, faMap, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+  faRocket, faCode, faMobileAlt, faMortarPestle, faMap, faEllipsisV, faMapSigns } from '@fortawesome/free-solid-svg-icons';
 import PhotographyPage from './views/photography/PhotographyPage';
 import SoftwarePage from './views/software/SoftwarePage';
 import BiographyPage from './views/biography/BiographyPage';
+import PageNotFound from './views/page-not-found/PageNotFound';
 
 // pre-load FontAwesome icons for use in project
 library.add(faPlay, faPause, faBackward, faForward, faPeace, faExpandArrowsAlt,
   faChevronLeft, faChevronRight, faDownload, faCheck, faBabyCarriage, faBriefcase,
   faCalculator, faSeedling, faBrain, faMicroscope, faCodeBranch, faDesktop,
-  faRocket, faCode, faMobileAlt, faMortarPestle, faMap, faEllipsisV);
+  faRocket, faCode, faMobileAlt, faMortarPestle, faMap, faEllipsisV, faMapSigns);
 
 class App extends Component {
 
@@ -30,42 +31,49 @@ class App extends Component {
         <div className="expand">
           <BrowserRouter>
             <div className="site-page">
-              <Route path='/:lang(|es)' render={() => (
-                <div className="App">
-                  <Base lang="English"
-                    content={ <Home /> } />
-                </div>
-              )}/>
-              <Route path='/resume/:lang(|es)?' render={() => (
+              <Switch>
+                <Route path='/:lang(|es)' render={() => (
                   <div className="App">
-                    <Base content={ <Resume /> } title="Resume" />
+                    <Base lang="English"
+                      content={ <Home /> } />
                   </div>
-              )}/>
-              <Route path='/contact/:lang(|es)?' render={() => (
+                )}/>
+                <Route path='/resume/:lang(|es)?' render={() => (
+                    <div className="App">
+                      <Base content={ <Resume /> } title="Resume" />
+                    </div>
+                )}/>
+                <Route path='/contact/:lang(|es)?' render={() => (
+                    <div className="App">
+                      <Base content={ <Contact /> } title="Contact Me" />
+                    </div>
+                )}/>
+                <Route path='/music/:lang(|es)?' render={() => (
+                    <div className="App">
+                      <Base content={ <MusicPage /> } title="Music" />
+                    </div>
+                )}/>
+                <Route path='/photography/:lang(|es)?' render={() => (
+                    <div className="App">
+                      <Base content={ <PhotographyPage /> } title="Photograhpy" />
+                    </div>
+                )}/>
+                <Route path='/software/:lang(|es)?' render={() => (
+                    <div className="App">
+                      <Base content={ <SoftwarePage /> } title="Software Engineering Philosophy" />
+                    </div>
+                )}/>
+                <Route path='/biography/:lang(|es)?' render={() => (
+                    <div className="App">
+                      <Base content={ <BiographyPage /> } title="Biography" />
+                    </div>
+                )}/>
+                <Route path='*' render={() => (
                   <div className="App">
-                    <Base content={ <Contact /> } title="Contact Me" />
+                    <Base content={ <PageNotFound /> } />
                   </div>
-              )}/>
-              <Route path='/music/:lang(|es)?' render={() => (
-                  <div className="App">
-                    <Base content={ <MusicPage /> } title="Music" />
-                  </div>
-              )}/>
-              <Route path='/photography/:lang(|es)?' render={() => (
-                  <div className="App">
-                    <Base content={ <PhotographyPage /> } title="Photograhpy" />
-                  </div>
-              )}/>
-              <Route path='/software/:lang(|es)?' render={() => (
-                  <div className="App">
-                    <Base content={ <SoftwarePage /> } title="Software Engineering Philosophy" />
-                  </div>
-              )}/>
-              <Route path='/biography/:lang(|es)?' render={() => (
-                  <div className="App">
-                    <Base content={ <BiographyPage /> } title="Biography" />
-                  </div>
-              )}/>
+                )}/>
+              </Switch>
             </div>
           </BrowserRouter>
         </div>

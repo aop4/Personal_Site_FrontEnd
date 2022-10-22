@@ -1,0 +1,19 @@
+.not-found-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@media only screen and (min-height: 400px) {
+    .not-found-container {
+        padding-top: 10%;
+    }
+}
+
+.not-found-img {
+    font-size: 8em;
+    color: #04AA6D;
+    padding-bottom: 30px;
+}
