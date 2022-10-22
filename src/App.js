@@ -38,32 +38,32 @@ class App extends Component {
               )}/>
               <Route path='/resume/:lang(|es)?' render={() => (
                   <div className="App">
-                    <Base content={ <Resume /> } />
+                    <Base content={ <Resume /> } title="Resume" />
                   </div>
               )}/>
               <Route path='/contact/:lang(|es)?' render={() => (
                   <div className="App">
-                    <Base content={ <Contact /> } />
+                    <Base content={ <Contact /> } title="Contact Me" />
                   </div>
               )}/>
               <Route path='/music/:lang(|es)?' render={() => (
                   <div className="App">
-                    <Base content={ <MusicPage /> } />
+                    <Base content={ <MusicPage /> } title="Music" />
                   </div>
               )}/>
               <Route path='/photography/:lang(|es)?' render={() => (
                   <div className="App">
-                    <Base content={ <PhotographyPage /> } />
+                    <Base content={ <PhotographyPage /> } title="Photograhpy" />
                   </div>
               )}/>
               <Route path='/software/:lang(|es)?' render={() => (
                   <div className="App">
-                    <Base content={ <SoftwarePage /> } />
+                    <Base content={ <SoftwarePage /> } title="Software Engineering Philosophy" />
                   </div>
               )}/>
               <Route path='/biography/:lang(|es)?' render={() => (
                   <div className="App">
-                    <Base content={ <BiographyPage /> } />
+                    <Base content={ <BiographyPage /> } title="Biography" />
                   </div>
               )}/>
             </div>

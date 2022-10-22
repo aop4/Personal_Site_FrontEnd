@@ -17,6 +17,14 @@ class BaseComponent extends Component {
         }
     }
 
+    componentDidMount() {
+        if (this.props.title) {
+            document.title = this.props.title;
+        } else {
+            document.title = 'Andrew Puglionesi';
+        }
+    }
+
     /* Used to update the language when the content component is not changed
     but the URL language parameter is changed (e.g. from '/' to '/es') */
     changeLanguage() {
