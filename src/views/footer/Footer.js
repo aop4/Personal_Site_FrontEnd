@@ -5,7 +5,7 @@ import './footer.css';
 export default class Footer extends Component {
     render() {
         return (
-            <div className="center footer">
+            <footer className="center footer">
                 <a href="https://github.com/aop4">GitHub</a> • 
                 <a href="https://www.linkedin.com/in/andrew-puglionesi/"> LinkedIn</a> • 
                 <a href="https://stringsofcharacters.wordpress.com/"> WordPress blog</a> • 
@@ -26,7 +26,7 @@ export default class Footer extends Component {
                         </Else>
                     </If>
                 </p>
-            </div>
+            </footer>
         );
     }
 }
