@@ -19,10 +19,10 @@
 /* Move controls and tracks a bit to the right on a large screen */
 @media only screen and (min-width: 900px) {
     .image-and-controls {
-        margin-left: 2em;
+        margin-left: 5em;
     }
     .music-container {
-        padding-left: 2em;
+        padding-left: 5em;
     }
 }
 

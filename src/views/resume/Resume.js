@@ -3,7 +3,7 @@ import axios from 'axios';
 import { BASE_URL } from '../../constants';
 
 export default class Resume extends Component {
-    
+
     /* Resizes the PDF iframe so its height matches the PDF inside of it. */
     resizeIframe(event) {
         const pdfHeightWidthRatio = 11 / 8.5; // height:width ratio for one-page pdf
@@ -13,16 +13,16 @@ export default class Resume extends Component {
         let frameHeight = frameWidth * pdfHeightWidthRatio;
         iframe.style.height = frameHeight + 'px';
     }
-    
+
     render() {
         return (
             <div className="container">
                 <iframe className="frame"
-                    style={ {
-                        minWidth: "90%", 
-                        marginLeft: '20px',
+                    style={{
+                        minWidth: "90%",
+                        marginLeft: '30px',
                         height: '90vh'
-                    } }
+                    }}
                     title="file"
                     src='/resume.pdf' />
             </div>

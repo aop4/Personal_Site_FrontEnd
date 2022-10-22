@@ -48,9 +48,9 @@ class BaseComponent extends Component {
                     <Header lang={ this.state.lang }
                         changeLanguage={ this.changeLanguage.bind(this) }/>
                     <div className="flex-container">
-                        <div className="sidebar">
+                        <nav className="sidebar">
                             <SidebarWithRouter lang={ this.state.lang } />
-                        </div>
+                        </nav>
                         <div className="content">
                             {/* component passed in as main content */ }
                             {React.cloneElement(this.props.content, {lang: this.state.lang}) }
