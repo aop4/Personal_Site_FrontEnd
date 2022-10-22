@@ -27,7 +27,7 @@ export default class Contact extends Component {
         let text = formData.get('comment');
         this.sendEmail(name, emailAddress, text)
         .then((res) => {
-            this.setState({ message: "✔ Your message has been sent. It travels o'er the hills of Mordor." });
+            this.setState({ message: "✔ Your message has been sent. It travels o'er the hills of Middle Earth." });
         }, (err) => {
             alert("Your message couldn't be sent. Try shooting an email to andrewpuglionesi@gmail.com");
         });

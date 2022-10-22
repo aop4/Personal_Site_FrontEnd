@@ -55,7 +55,7 @@ class App extends Component {
                 )}/>
                 <Route path='/photography/:lang(|es)?' render={() => (
                     <div className="App">
-                      <Base content={ <PhotographyPage /> } title="Photograhpy" />
+                      <Base content={ <PhotographyPage /> } title="Photography" />
                     </div>
                 )}/>
                 <Route path='/software/:lang(|es)?' render={() => (
