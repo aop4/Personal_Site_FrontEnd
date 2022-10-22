@@ -18,7 +18,7 @@ export default class BiographyPage extends Component {
         return (
             <div className="bio-container">
                 {this.state.biographyEntries.map((entry, index) =>
-                    <div className="biography-entry">
+                    <div className="biography-entry" key={index}>
                         <If condition={ index > 0 }>
                             <Then>
                                 <Zoom bottom cascade>
@@ -35,8 +35,8 @@ export default class BiographyPage extends Component {
                                 className="biography-entry-icon"
                                 style={{ color: entry.iconColor }} />
                             <h1 className="biography-entry-year">{ entry.year }</h1>
-                            {entry.paragraphs.map(paragraph => 
-                                <p className="biography-entry-text">{ paragraph }</p>
+                            {entry.paragraphs.map((paragraph, index) => 
+                                <p className="biography-entry-text" key={index}>{ paragraph }</p>
                             )}
                         </Zoom>
                     </div>
