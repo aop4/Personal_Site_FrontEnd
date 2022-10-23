@@ -10,20 +10,16 @@ class BaseComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            menuOpen: false
+            isBurgerMenuOpen: false
         }
     }
     
-    hideOrShowMenu(menuState) {
-        /* if the menu was closed, hide it reliably (see menuClassName reference
-        below; the class 'hidden' hides menu) */
-        if (! menuState.isOpen) {
-            this.setState({menuOpen: false});
-        }
-        // if the menu was opened, show it
-        else {
-            this.setState({menuOpen: true});
-        }
+    toggleBurgerMenuVisible(menuState) {
+        this.setState({isBurgerMenuOpen: menuState.isOpen});
+    }
+
+    closeBurgerMenu() {
+        this.setState({isBurgerMenuOpen: false});
     }
 
     /* Returns a link to the current page in a different language.  */
@@ -45,10 +41,11 @@ class BaseComponent extends Component {
         return (    
             <div id="header" className="header">
                 <Menu id="burger-menu"
-                    onStateChange={ (menuState) => this.hideOrShowMenu(menuState) }
-                    menuClassName={ this.state.menuOpen ? 'bm-menu':'hidden' }
-                    crossButtonClassName={ this.state.menuOpen ? 'bm-cross-button':'hidden' }>
-                    <Sidebar lang={ this.props.lang } />
+                    onStateChange={ (menuState) => this.toggleBurgerMenuVisible(menuState) }
+                    isOpen={ this.state.isBurgerMenuOpen }
+                    menuClassName='bm-menu'
+                    crossButtonClassName='bm-cross-button'>
+                    <Sidebar lang={ this.props.lang } closeBurgerMenu={ this.closeBurgerMenu.bind(this) } />
                 </Menu>
                 <Link className="lang-toggle" 
                     to={ this.changeLanguageLink() }
