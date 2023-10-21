@@ -18,7 +18,7 @@ export default class Footer extends Component {
                 <p>
                     <If condition={ this.props.lang === 'es' }>
                         <Then>
-                            Creado de cero con React, Ruby on Rails, y &lt;3.
+                            Creado de cero con React, Ruby on Rails, y &lt;3 &lt;3 &lt;3.
                         </Then>
                         <Else>
                             Built from scratch with React, Ruby on Rails, and &lt;3.
