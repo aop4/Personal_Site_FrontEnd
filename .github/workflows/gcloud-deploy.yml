@@ -28,4 +28,5 @@ jobs:
       with:
         credentials_json: '${{ secrets.GCLOUD_SERVICE_ACCT_KEY_JSON }}'
 
-    
+    - id: 'deploy'
+      uses: 'google-github-actions/deploy-appengine@v1'
