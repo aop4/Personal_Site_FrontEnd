@@ -49,7 +49,7 @@ class Sidebar extends Component {
     
     render() {
         return (
-            <ul>
+            <ul id="sidebar-links">
                 {this.state.navLinks.map((linkData, index) => 
                     <li className="sidebar-link" key={ linkData.englishHref }>
                         <Link to={ this.getLinkFor(linkData) }

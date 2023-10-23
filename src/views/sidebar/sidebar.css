@@ -1,4 +1,4 @@
-ul {
+#sidebar-links {
     list-style: none;
     border-right: 1px solid black;
     border-image: linear-gradient(to bottom, #002156, white) 1 100%;
