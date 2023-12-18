@@ -26,20 +26,26 @@ export default class SoftwarePage extends Component {
                 
                 <h2>Half of your job is staying calm.</h2>
                 <p>Beginner programmers are often frustrated by the craft. This is natural: when we transition from using software to writing it, we're suddenly faced with unintuitive tools that can't tolerate ambiguity and give us cryptic feedback. It is what it is.</p>
-                <p>I believe that early on, emotional regulation is one of a programmer's most important skills. When your mental bandwidth is consumed by panic or anger, you might not find the source of your mistakes.</p>
+                <p>I believe that early on, emotional regulation is one of a programmer's most important skills. When your mental bandwidth is consumed by panic or anger, it's difficult to find the source of your mistakes.</p>
                 <p>As we gain experience, we get better at dealing with ambiguous error messages and counterintuitive results. We learn to stay calm and seek the root of the problem. Underlying our success is the ability to keep it together, to let curiosity rather than frustration guide us.</p>
 
                 <h2>Functions should have a single identifiable purpose.</h2>
                 <p>We've all groaned at 500-line functions in legacy code, and with good reason: the more work a function handles, the harder it is to modify and test. Sometimes monster functions are the result of generations of programmers who felt rushed and added their code in the most convenient place to meet a deadline. Sometimes the legacy code was just poorly designed to begin with.</p>
                 <p>One way to make sure your functions are concise—and that they <em>stay</em> concise—is to ensure they do just one thing. retrieveInventoryItems() should retrieve some items from an inventory, for example. But it shouldn't also send an email, update those items in a database, and store the speed of light in a global variable.</p>
-                <p>To orchestrate a series of related tasks, one "high-level" function can call multiple low-level functions that each have a single clear purpose. This way, most functions are focused and small, and a few are more complex but still concise. Your code reads like a book, and you don't have to impose an arbitrary line limit to achieve it.</p>
+                <p>To orchestrate a series of related tasks, one "root-level" function can call multiple lower level functions that each have a single clear purpose. This way, most functions are focused and small, and a few root-level functions are more complex but still concise. Your code reads like a book, and you don't have to impose an arbitrary line limit to achieve it.</p>
+                <p>Of course, classes, packages, and projects should have a clearly identifiable purpose as well. But as our most fundamental building blocks, functions can easily make or break maintainability.</p>
 
                 <h2>Aim for readability.</h2>
                 <p>When you can think of multiple ways to accomplish a task, choose the implementation that will be easiest to understand and work with in the future.</p>
-                <p>Readability is something that's easily addressed as you write your code and re-read it. How long would it take to grasp what it does? Did you choose good variable names? Is there anything that should be clarified with a comment? Does what you've written truly "click"?</p>
+                <p>Readability can be addressed as you write code and re-read it. How long would it take a newcomer to grasp what it does? Did you choose good variable names? Is there anything that should be clarified with a comment? Does what you've written truly "click"?</p>
+                <p>Even when the code seems crystal clear in an IDE, it's helpful to review your own pull requests before you add reviewers. You may save yourself some embarassment by catching silly mistakes, but more importantly it puts you in the shoes of your audience. Ultimately you're writing code for <em>people</em>—including all the present and future colleagues who will have to understand and work with it.</p>
 
-                <h2>Aim for modularity.</h2>
-                <p>Above, I suggested limiting functions to having a single identifiable purpose. This practice (often labeled the single-responsibility principle) enables reuse of the function in new contexts. The same principle can also be applied at larger scales. When you write specialized classes, libraries, services, and UI components, you can reuse them in different contexts. This saves time and prevents duplication of code.</p>
+                <h2>Aim for reusability.</h2>
+                <p>Look for opportunities to reuse code so that you and your colleagues don't keep reinventing the wheel.</p>
+                <p>Perhaps you're working with a monolith, and you notice that the same 30-line permission check is duplicated six times. Maybe instead of copying it yet again, you could abstract it into a class dealing with permissions.</p>
+                <p>In a distributed environment where there's crosstalk between microservices, it may be helpful to write a client library for a given service, rather than writing separate clients in each dependent application.</p>
+                <p>And of course, when creating a UI, you can build modular components with an eye toward reusing them in different contexts.</p>
+                <p>This idea is nothing new: as the mantra goes, "don't repeat yourself." The hard part is taking a step back and realizing that several teams, projects, or modules are all doing the same thing. But staying one step ahead of duplication saves time and reduces complexity.</p>
 
                 <h2>If a requirement doesn't make sense, then work to change it.</h2>
                 <p>If you think a requirement is ill-advised or illogical, bring it up with your team.</p>
@@ -55,8 +61,10 @@ export default class SoftwarePage extends Component {
                     <li><p>&#123; Spring Boot, Ruby on Rails, Django, Node &#125;</p></li>
                     <li><p>&#123; C#, Java, JavaScript, Python &#125;</p></li>
                 </ul>
-                <p>The members within each set are capable of doing pretty much the same things. You can still build a fully functioning website with JQuery today. You could rewrite a Spring Boot backend with Rails. Your experience as a developer would be different, but users wouldn't know the difference.</p>
-                <p>Every developer is capable of learning a new language or framework by building off of past experience with other tools. Therefore, specific languages and frameworks should not be a heavily weighted factor in staffing and hiring decisions.</p>
+                <p>The members within each set are capable of doing pretty much the same things. You can still build a fully functioning website with JQuery today. You could rewrite a Spring Boot service with Rails, completely preserving its behavior along the way. That's because they are just tools designed to solve the same basic problems.</p>
+                <p>I am not advocating for clinging to outdated technologies forever, nor am I denying that new tools can be revolutionary for developers' productivity.</p>
+                <p>Actually, I bring this up because of a trend among recruiters and hiring managers to look for experience with specific tools. There is a tendency to label people as "Java" or "iOS" developers and keep them on a narrow path.</p>
+                <p>Every developer is capable of learning a new language or framework by building off of past experience with similar tools. If they have a firm understanding of their domain (say, RESTful microservices), then learning new tools is largely a matter of learning new syntax. A strong foundation is what makes a candidate capable.</p>
 
                 <h2>Software is always a work in progress.</h2>
                 <p>If software is good, someone somewhere will ask you to make it better. Sometimes it happens in the middle of the development process, and sometimes it happens after a release. In a truly agile process, we give the customer time and space to provide feedback, we listen, and we iterate on our design and implementation to satisfy their needs.</p>
