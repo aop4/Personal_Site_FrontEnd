@@ -20,6 +20,7 @@
     "react": "^16.8.6",
     "react-app-polyfill": "^0.2.2",
     "react-burger-menu": "^2.6.10",
+    "react-code-blocks": "^0.1.5",
     "react-dom": "^16.8.6",
     "react-if": "^3.4.3",
     "react-image-lightbox": "^5.1.0",

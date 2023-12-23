@@ -3,10 +3,17 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithubSquare } from '@fortawesome/free-brands-svg-icons';
 import { BASE_URL } from '../../constants';
+import { CodeBlock, github } from 'react-code-blocks';
 import './software-page.css';
 
 export default class SoftwarePage extends Component {
     render() {
+        const javaCodeSample = 'public void processSale(OrderData orderData) {\n' +
+                                '    this.validateOrder(orderData);\n' +
+                                '    this.inventoryService.updateInventory(orderData);\n' +
+                                '    this.warehouseService.initiateOrderShipping(orderData);\n' +
+                                '    this.notificationService.sendOrderConfirmation(orderData);\n' +
+                                '}'
         return (
             <div className="software-container text-container">
                 <h1 className="software-phil-title">(Practical) software engineering philosophy</h1>
@@ -15,30 +22,44 @@ export default class SoftwarePage extends Component {
 
                 <h2>What you're building is just as important as how you build it.</h2>
                 <p>Software engineers should fully understand, and sometimes question, what we're asked to make.</p>
-                <p>If it's not a pet project, your software plays a real role in the real world. When organizations prioritize speed, profit, or convenience over the well-being of users, there are real consequences. Planes crash. A patient gets the wrong medication. Privacy is violated.</p>
+                <p>If it's not a pet project, your software plays a real role in the real world. When organizations prioritize delivery speed, profit, or convenience over the well-being of users, there are real consequences. Planes crash. A patient gets the wrong medication. Privacy is violated.</p>
                 <p>Given our interest in technical design and implementation, it's easy for engineers to keep our heads down and do what we're told. But what if we're told to do something unethical? Engineers aren't solely responsible for organizational failures, but we have a duty to speak up when we see them coming.</p>
 
                 <h2>Unit tests are foundational to reliable software.</h2>
                 <p>During interviews, I've often asked candidates why unit tests are important. The usual answer is that a unit test suite can be executed much faster than a manual test suite. That's true, but it just scratches the surface. To fully benefit from unit testing, we need to understand everything it offers.</p>
                 <p>Unit tests vet code in a way no manual test can. They examine the smallest testable components of the system. If your code were a bicycle, this would be like separately testing every part of the bicycle. The spokes, the chain, the handbrakes, the shocks. Once we've tested all these individual components, we can have much more confidence in the bicycle as a whole.</p>
                 <p>And what if we never tested them? What if the handbrake designer never tried squeezing the brake and the chain was never spun on a chainring? The parts might come off the assembly line with imperceptible defects, and I certainly wouldn't want to touch that bike. Unit tests ensure the stability of the system by testing it deeply.</p>
-                <p>Other benefits of unit testing are that it encourages you to dream up all the edge cases your code might encounter and to design your code in such a way that future programmers can easily use it. And of course, if someone accidentally messes up a function in the future, unit tests serve as a quality gate.</p>
+                <p>Other benefits of unit testing are that it encourages you to dream up all the edge cases your code might encounter and to design your code in such a way that future programmers can easily use it. And of course, if someone refactors a function in the future, unit tests serve as a quality gate.</p>
+
+                <h2>Don't encourage best practices—enforce them.</h2>
+                <p>The only way to guarantee that best practices are followed is to make them mandatory.</p>
+                <p>No matter how nicely you ask a group of programmers to deliver code with 80% test coverage, people will underdeliver if all you've done is ask. Humans make mistakes.</p>
+                <p>What <em>will</em> guarantee 80% coverage is setting up an automated check in your build pipeline that keeps non-compliant code from being merged. Similarly, linters can enforce style guidelines, and version control platforms can mandate code review. Many of the tools we use can be configured to raise the standard of quality.</p>
+                <p>Once these guide rails are in place, they humble just about everyone and catch mistakes from the best of the best.</p>
+                <p>Quality gates have a significant impact on the developer experience, so it's wise to hold a vote before adopting new rules to make sure everyone's voice is heard.</p>
                 
                 <h2>Half of your job is staying calm.</h2>
-                <p>Beginner programmers are often frustrated by the craft. This is natural: when we transition from using software to writing it, we're suddenly faced with unintuitive tools that can't tolerate ambiguity and give us cryptic feedback. It is what it is.</p>
+                <p>Beginner programmers are often frustrated by the craft. This is natural: when we transition from using software to writing it, we're suddenly faced with unintuitive tools that can't tolerate ambiguity and give us cryptic feedback.</p>
                 <p>I believe that early on, emotional regulation is one of a programmer's most important skills. When your mental bandwidth is consumed by panic or anger, it's difficult to find the source of your mistakes.</p>
                 <p>As we gain experience, we get better at dealing with ambiguous error messages and counterintuitive results. We learn to stay calm and seek the root of the problem. Underlying our success is the ability to keep it together, to let curiosity rather than frustration guide us.</p>
 
                 <h2>Functions should have a single identifiable purpose.</h2>
                 <p>We've all groaned at 500-line functions in legacy code, and with good reason: the more work a function handles, the harder it is to modify and test. Sometimes monster functions are the result of generations of programmers who felt rushed and added their code in the most convenient place to meet a deadline. Sometimes the legacy code was just poorly designed to begin with.</p>
-                <p>One way to make sure your functions are concise—and that they <em>stay</em> concise—is to ensure they do just one thing. retrieveInventoryItems() should retrieve some items from an inventory, for example. But it shouldn't also send an email, update those items in a database, and store the speed of light in a global variable.</p>
-                <p>To orchestrate a series of related tasks, one "root-level" function can call multiple lower level functions that each have a single clear purpose. This way, most functions are focused and small, and a few root-level functions are more complex but still concise. Your code reads like a book, and you don't have to impose an arbitrary line limit to achieve it.</p>
-                <p>Of course, classes, packages, and projects should have a clearly identifiable purpose as well. But as our most fundamental building blocks, functions can easily make or break maintainability.</p>
+                <p>One way to make sure your functions are concise—and that they <em>stay</em> concise—is to ensure they do just one thing. <code>retrieveInventoryItems()</code> should retrieve some items from an inventory, for example. But it shouldn't also send an email, update those items in a database, and store the speed of light in a global variable.</p>
+                <p>To orchestrate a series of related tasks, one "root-level" function can call multiple lower level functions that each have a single clear purpose. Here's a simple example:</p>
+                <CodeBlock language="java" 
+                    showLineNumbers={false}
+                    theme={github}
+                    text={javaCodeSample}>
+                </CodeBlock>
+                <p>Because it calls on more specialized functions to do the heavy lifting, we can get a high-level understanding of the <code>processSale()</code> function with one quick glance.</p>
+                <p>Of course, classes, packages, and projects should have a clearly identifiable purpose as well. But because functions are our most fundamental building blocks, poorly structured functions tend to be especially troublesome. Once we let them grow into monsters, taming them becomes a formidable task.</p>
 
-                <h2>Aim for readability.</h2>
-                <p>When you can think of multiple ways to accomplish a task, choose the implementation that will be easiest to understand and work with in the future.</p>
+                <h2>Write code for people, not machines.</h2>
+                <p>When you can think of multiple ways to accomplish a task, choose the implementation that will be easiest for programmers to understand and work with in the future.</p>
+                <p>Programmers are all authors. We're writing for two audiences at once: the compiler (or interpreter) and other people. Saving a few characters or CPU cycles probably isn't worth it if it makes the code harder for a person to understand.</p>
                 <p>Readability can be addressed as you write code and re-read it. How long would it take a newcomer to grasp what it does? Did you choose good variable names? Is there anything that should be clarified with a comment? Does what you've written truly "click"?</p>
-                <p>Even when the code seems crystal clear in an IDE, it's helpful to review your own pull requests before you add reviewers. You may save yourself some embarassment by catching silly mistakes, but more importantly it puts you in the shoes of your audience. Ultimately you're writing code for <em>people</em>—including all the present and future colleagues who will have to understand and work with it.</p>
+                <p>Even when the code seems crystal clear in an IDE, it's helpful to review your own pull requests before you add reviewers. You may save yourself some embarassment by catching silly mistakes, but more importantly it puts you in the shoes of your (human) audience. You're writing code for <em>people</em>—including all the present and future colleagues who will have to understand and work with it.</p>
 
                 <h2>Aim for reusability.</h2>
                 <p>Look for opportunities to reuse code so that you and your colleagues don't keep reinventing the wheel.</p>
