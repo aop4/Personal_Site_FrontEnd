@@ -35,7 +35,7 @@ export const BIOGRAPHY_ENTRIES = [
     ),
     new BiographyEntry('2016', 'rocket', '#ad1457',
         [
-         "I switched my major to computer science after two full years of studying neuroscience. It was daunting to take the leap, but as I gained more knowledge of both fields, it became increasingly clear this was the better path for me.",
+         "I switched my major to computer science after two full years of studying neuroscience. It was a daunting leap, but as I gained more knowledge of both fields, it became increasingly clear this was the better path for me.",
          "I discontinued my research to focus on catching up in my new major. I loaded up on computer science courses and hunkered down in libraries, empty classrooms, parks, lounges, buses… okay, I didn’t hunker down. Everywhere I went, my coursework followed."
         ]
     ),
@@ -55,7 +55,7 @@ export const BIOGRAPHY_ENTRIES = [
          "Every day at work offers a new puzzle, and I’ve grown to love solving them. It’s fantastic to know that some of my work dealing with Covid-19 vaccinations and treatments for rare diseases is meaningfully helping pharmacies help patients. One day every codebase will be a legacy codebase, so I’m glad I’ve been exposed to technologies old and new and learned a lot about maintaining and modernizing legacy code."
         ]
     ),
-    new BiographyEntry(new Date().getFullYear(), 'map', '#ad1457',
+    new BiographyEntry('Tomorrow', 'map', '#ad1457',
         [
          "I can't be certain what the future has in store, but I believe I'll always want to use technology to make the world a better place."
         ]

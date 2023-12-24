@@ -40,7 +40,7 @@ export default class SoftwarePage extends Component {
                 
                 <h2>Half of your job is staying calm.</h2>
                 <p>Beginner programmers are often frustrated by the craft. This is natural: when we transition from using software to writing it, we're suddenly faced with unintuitive tools that can't tolerate ambiguity and give us cryptic feedback.</p>
-                <p>I believe that early on, emotional regulation is one of a programmer's most important skills. When your mental bandwidth is consumed by panic or anger, it's difficult to find the source of your mistakes.</p>
+                <p>From the beginning, emotional regulation is one of a programmer's most important skills. When your mental bandwidth is consumed by panic or anger, it's difficult to find the source of your mistakes.</p>
                 <p>As we gain experience, we get better at dealing with ambiguous error messages and counterintuitive results. We learn to stay calm and seek the root of the problem. Underlying our success is the ability to keep it together, to let curiosity rather than frustration guide us.</p>
 
                 <h2>Functions should have a single identifiable purpose.</h2>
@@ -52,21 +52,21 @@ export default class SoftwarePage extends Component {
                     theme={github}
                     text={javaCodeSample}>
                 </CodeBlock>
-                <p>Because it calls on more specialized functions to do the heavy lifting, we can get a high-level understanding of the <code>processSale()</code> function with one quick glance.</p>
+                <p>Because it calls on more specialized functions to do the heavy lifting, we can get a high-level understanding of the <code>processSale()</code> function with one quick glance. If <code>processSale()</code> did everything by itself, it might be a 2,000-line giant.</p>
                 <p>Of course, classes, packages, and projects should have a clearly identifiable purpose as well. But because functions are our most fundamental building blocks, poorly structured functions tend to be especially troublesome. Once we let them grow into monsters, taming them becomes a formidable task.</p>
 
                 <h2>Write code for people, not machines.</h2>
                 <p>When you can think of multiple ways to accomplish a task, choose the implementation that will be easiest for programmers to understand and work with in the future.</p>
-                <p>Programmers are all authors. We're writing for two audiences at once: the compiler (or interpreter) and other people. Saving a few characters or CPU cycles probably isn't worth it if it makes the code harder for a person to understand.</p>
+                <p>Programmers are all authors. We're writing for two audiences at once: computer processors and other people. Saving a few characters or CPU cycles probably isn't worth it if it makes the code harder for a person to understand.</p>
                 <p>Readability can be addressed as you write code and re-read it. How long would it take a newcomer to grasp what it does? Did you choose good variable names? Is there anything that should be clarified with a comment? Does what you've written truly "click"?</p>
-                <p>Even when the code seems crystal clear in an IDE, it's helpful to review your own pull requests before you add reviewers. You may save yourself some embarassment by catching silly mistakes, but more importantly it puts you in the shoes of your (human) audience. You're writing code for <em>people</em>—including all the present and future colleagues who will have to understand and work with it.</p>
+                <p>Even when the code seems crystal clear in an IDE, it's helpful to review your own pull requests before you add reviewers. You may save yourself some embarassment by catching silly mistakes, but more importantly it puts you in the shoes of your human audience. You're writing code for <em>people</em>—including all the present and future colleagues who will have to understand and work with it.</p>
 
-                <h2>Aim for reusability.</h2>
+                <h2>Reduce, reuse, refactor.</h2>
                 <p>Look for opportunities to reuse code so that you and your colleagues don't keep reinventing the wheel.</p>
                 <p>Perhaps you're working with a monolith, and you notice that the same 30-line permission check is duplicated six times. Maybe instead of copying it yet again, you could abstract it into a class dealing with permissions.</p>
                 <p>In a distributed environment where there's crosstalk between microservices, it may be helpful to write a client library for a given service, rather than writing separate clients in each dependent application.</p>
                 <p>And of course, when creating a UI, you can build modular components with an eye toward reusing them in different contexts.</p>
-                <p>This idea is nothing new: as the mantra goes, "don't repeat yourself." The hard part is taking a step back and realizing that several teams, projects, or modules are all doing the same thing. But staying one step ahead of duplication saves time and reduces complexity.</p>
+                <p>This idea is nothing new: as the mantra goes, "don't repeat yourself." The hard part is taking a step back and realizing that several teams, projects, or modules are all doing the same thing. But staying one step ahead of duplication saves time, streamlines maintenance, and reduces complexity.</p>
 
                 <h2>If a requirement doesn't make sense, then work to change it.</h2>
                 <p>If you think a requirement is ill-advised or illogical, bring it up with your team.</p>
