@@ -1,25 +1,8 @@
-$photoWidth: 90%;
-$photoSidePadding: (100% - $photoWidth) / 2.0; /* distance between photo and its container on each side */
-$fullScreenBtnPadding: 5px;
-$fullScreenBtnDark: rgba(100, 100, 100, 0.8);
-$fullScreenBtnLight: rgba(200, 200, 200, 0.5);
-
-.photos-container {
-    display: flex;
-    height: 100%;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    padding-top: 1em;
-}
-
-.photos-page {
-    padding: 0 2em;
-}
+$gapBetweenThumbnails: 5px;
 
 /* adjust react-lightbox CSS */
 .ril-outer {
-    background-color: rgba(0, 0, 0, 0.98) !important;
+    background-color: rgba(20, 20, 20, 0.98) !important;
 }
 
 .ril-toolbar {
@@ -30,80 +13,33 @@ $fullScreenBtnLight: rgba(200, 200, 200, 0.5);
     border-right: none !important;
 }
 
-.carousel {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.img-container {
-    position: relative;
-}
-
-.curr-photo {
-    max-width: $photoWidth;
-    max-height: 80vh;
-    margin: auto;
-}
-
-.full-screen-icon {
-    z-index: 500;
-    color: $fullScreenBtnDark;
-    /* position full-screen button relative to img-container */
-    position: absolute;
-    top: $fullScreenBtnPadding;
-    /* We want the full screen button to be just a smidgeon from the right end
-    of the image. But we have to define its distance from the right end of
-    the container. So we offset by the gap between the right side of the image
-    and the right side of the container. Sass to the rescue... */
-    right: calc(#{$photoSidePadding} + #{$fullScreenBtnPadding});
-    animation-name: darkToLight;
-    animation-duration: 4.5s;
-    animation-iteration-count: infinite;
-}
-
-/* This is flashy, ya, but there's also a good reason for it. When the icon
-is overlayed atop an image, there's no way to ensure it's visible on top
-of that image if its color is static. What if the image is the exact
-same color? So the icon changes color to ensure it's visible no matter what. */
-@keyframes darkToLight {
-    0% {
-        color: $fullScreenBtnLight;
-    }
-    50% {
-        color: $fullScreenBtnDark;
-    }
-    100% {
-        color: $fullScreenBtnLight;
-    }
-}
-
-.photo-select-arrow {
-    color: #aaa;
-    cursor: pointer;
-    padding: 100px 5px; /* Make it easier to switch between photos */
-}
-
-.photo-select-arrow:hover {
-    background-color: #ddd;
-}
-
 /* mobile/tablet */
 @media only screen and (max-width: 899px) {
-    .photo-select-arrow {
-        font-size: 2em;
-    }
-    .full-screen-icon {
-        font-size: 1.5em;
+    .img-thumbnail {
+        // arrange thumbnails in rows of 2. If image is too wide, there will only be 1 per row
+        width: calc(50% - #{$gapBetweenThumbnails} - 10px);
     }
 }
 
 /* desktop */
 @media only screen and (min-width: 900px) {
-    .photo-select-arrow {
-        font-size: 4em;
+    .img-thumbnail {
+        // arrange thumbnails in rows of 3. If image is too wide, there will only be 2 per row
+        width: calc(33% - #{$gapBetweenThumbnails} - 5px);
     }
-    .full-screen-icon {
-        font-size: 4em;
-    }
+}
+
+.thumbnail-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: $gapBetweenThumbnails;
+    width: 100%;
+    padding-top: 30px;
+}
+
+.img-thumbnail {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    cursor: pointer;
 }

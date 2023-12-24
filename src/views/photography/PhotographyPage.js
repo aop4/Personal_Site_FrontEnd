@@ -6,7 +6,6 @@ import Lightbox from 'react-image-lightbox';
 
 import 'react-image-lightbox/style.css';
 import './photography-page.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default class PhotographyPage extends Component {
 
@@ -94,33 +93,25 @@ export default class PhotographyPage extends Component {
         });
     }
 
+    openPhoto(photoIndex) {
+        this.setState({
+            currPhotoIndex: photoIndex
+        });
+        this.showLightbox();
+    }
+
     render() {
         return (
             <div className="photos-page">
-                <h1>{ this.props.lang === 'es' ? 'Fotos' : 'Photos' }</h1>
-                {/* in-page carousel */}
-                <div className={ "photos-container " + (this.state.didLoadPhotos ? '' : 'hidden') } >
-                    <LoadingScreen ref={ this.loadingScreen }>
-                    </LoadingScreen>
-                    <div className="carousel">
-                        <FontAwesomeIcon icon="chevron-left"
-                            className={ "photo-select-arrow " + (this.state.didLoadPhotos ? '' : 'hidden') }
-                            onClick={ () => this.showPrevPhoto() }
-                            title="Previous photo" />
-                        <div className="img-container">
-                            <FontAwesomeIcon className={ "full-screen-icon cursor-pointer " + (this.state.didLoadPhotos ? '' : 'hidden') }
-                                icon="expand-arrows-alt"
-                                onClick={ () => this.showLightbox() }
-                                title="Full screen" />
-                            <img className="curr-photo"
-                                src={ this.state.photos.length ? this.state.photos[this.state.currPhotoIndex].url : '' }
-                                alt=''/>
-                        </div>
-                        <FontAwesomeIcon icon="chevron-right"
-                            className={ "photo-select-arrow " + (this.state.didLoadPhotos ? '' : 'hidden') }
-                            onClick={ () => this.showNextPhoto() }
-                            title="Next photo" />
-                    </div>
+                <LoadingScreen ref={ this.loadingScreen }>
+                </LoadingScreen>
+                <div className="thumbnail-container">
+                    { this.state.photos.map((photo, index) =>
+                        <img src={photo.url}
+                            className='img-thumbnail'
+                            onClick={ () => this.openPhoto(index) }
+                            alt={'Photo title: ' + photo.title}></img>
+                    )}
                 </div>
                 {/* full-page lightbox */}
                 { this.state.showLightbox && 
