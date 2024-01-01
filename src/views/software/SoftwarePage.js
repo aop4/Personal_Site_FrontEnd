@@ -21,12 +21,12 @@ export default class SoftwarePage extends Component {
                 <p>Software engineering is a creative pursuit that no two people will approach the same way. That said, these are some guiding principles that I've personally found helpful during my career.</p>
 
                 <h2>What you're building is just as important as how you build it.</h2>
-                <p>Software engineers should fully understand, and sometimes question, what we're asked to make.</p>
                 <p>If it's not a pet project, your software plays a real role in the real world. When organizations prioritize delivery speed, profit, or convenience over the well-being of users, there are real consequences. Planes crash. A patient gets the wrong medication. Privacy is violated.</p>
-                <p>Given our interest in technical design and implementation, it's easy for engineers to keep our heads down and do what we're told. But what if we're told to do something unethical? Engineers aren't solely responsible for organizational failures, but we have a duty to speak up when we see them coming.</p>
+                <p>Given our interest in technical design and implementation, it's easy for engineers to keep our heads down and do what we're told. But what if we're told to do something we see as questionable or unethical? What if we notice a flaw that could bring down production?</p>
+                <p>As those closest to the codebase, we have the clearest insight into our systems, and we know things no one else knows. With your unique perspective and knowledge, you may be the only person who recognizes a problem. Engineers aren't solely responsible for organizational failures, but we have a duty to speak up when we see them coming.</p>
 
                 <h2>Unit tests are foundational to reliable software.</h2>
-                <p>During interviews, I've often asked candidates why unit tests are important. The usual answer is that a unit test suite can be executed much faster than a manual test suite. That's true, but it just scratches the surface. To fully benefit from unit testing, we need to understand everything it offers.</p>
+                <p>During interviews, I've often asked candidates why unit tests are important. They usually say that a unit test suite can be executed much faster than a manual test suite. That's true, but it just scratches the surface. To fully benefit from unit testing, we need to understand everything it offers.</p>
                 <p>Unit tests vet code in a way no manual test can. They examine the smallest testable components of the system. If your code were a bicycle, this would be like separately testing every part of the bicycle. The spokes, the chain, the handbrakes, the shocks. Once we've tested all these individual components, we can have much more confidence in the bicycle as a whole.</p>
                 <p>And what if we never tested them? What if the handbrake designer never tried squeezing the brake and the chain was never spun on a chainring? The parts might come off the assembly line with imperceptible defects, and I certainly wouldn't want to touch that bike. Unit tests ensure the stability of the system by testing it deeply.</p>
                 <p>Other benefits of unit testing are that it encourages you to dream up all the edge cases your code might encounter and to design your code in such a way that future programmers can easily use it. And of course, if someone refactors a function in the future, unit tests serve as a quality gate.</p>
@@ -55,9 +55,9 @@ export default class SoftwarePage extends Component {
                 <p>Because it calls on more specialized functions to do the heavy lifting, we can get a high-level understanding of the <code>processSale()</code> function with one quick glance. If <code>processSale()</code> did everything by itself, it might be a 2,000-line giant.</p>
                 <p>Of course, classes, packages, and projects should have a clearly identifiable purpose as well. But because functions are our most fundamental building blocks, poorly structured functions tend to be especially troublesome. Once we let them grow into monsters, taming them becomes a formidable task.</p>
 
-                <h2>Write code for people, not machines.</h2>
-                <p>When you can think of multiple ways to accomplish a task, choose the implementation that will be easiest for programmers to understand and work with in the future.</p>
-                <p>Programmers are all authors. We're writing for two audiences at once: computer processors and other people. Saving a few characters or CPU cycles probably isn't worth it if it makes the code harder for a person to understand.</p>
+                <h2>Write code for people.</h2>
+                <p>When you can think of multiple ways to accomplish a task, favor the implementation that will be easiest for programmers to understand and work with in the future.</p>
+                <p>Programmers are all authors. We're writing code for two audiences at once: computer processors and other people. There are practically infinite ways to write code that functions correctly, but most of them aren't readable, performant, or reasonable. That's why programming is hard.</p>
                 <p>Readability can be addressed as you write code and re-read it. How long would it take a newcomer to grasp what it does? Did you choose good variable names? Is there anything that should be clarified with a comment? Does what you've written truly "click"?</p>
                 <p>Even when the code seems crystal clear in an IDE, it's helpful to review your own pull requests before you add reviewers. You may save yourself some embarassment by catching silly mistakes, but more importantly it puts you in the shoes of your human audience. You're writing code for <em>people</em>—including all the present and future colleagues who will have to understand and work with it.</p>
 
@@ -74,7 +74,7 @@ export default class SoftwarePage extends Component {
                 <p>Maybe you're wrong and the requirements are just fine. You might as well make sure.</p>
 
                 <h2>Languages and frameworks are frequently interchangeable.</h2>
-                <p>Blasphemy, I know. We need speed, type safety, and elegant object-oriented language features when building at scale! But consider this: Instagram was built with Python, which meets none of those criteria. And Instagram is pretty big.</p>
+                <p>Blasphemy, I know. We need speed, type safety, and elegant object-oriented language features to build systems that scale! But consider this: Instagram was built with Python, which meets none of those criteria. And Instagram is pretty big.</p>
                 <p>Most modern programming languages support the same basic constructs and have similar syntax. In special cases, it might be easier to do things in a certain language (R is good for data science and statistics, or so I hear). But most languages and competing frameworks are more similar than different.</p>
                 <p>Consider the following three sets of tools:</p>
                 <ul>
