@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { BASE_URL } from '../../constants';
 import LoadingScreen from '../loading-screen/LoadingScreen';
-import Lightbox from 'react-image-lightbox';
+import Lightbox from 'yet-another-react-lightbox';
 
-import 'react-image-lightbox/style.css';
 import './photography-page.scss';
+import "yet-another-react-lightbox/styles.css";
 
 export default class PhotographyPage extends Component {
 
@@ -75,24 +75,6 @@ export default class PhotographyPage extends Component {
         });
     }
 
-    showPrevPhoto() {
-        let photoIndex = this.state.currPhotoIndex;
-        let photos = this.state.photos;
-        photoIndex = (photoIndex - 1 + photos.length) % photos.length;
-        this.setState({
-            currPhotoIndex: photoIndex
-        });
-    }
-
-    showNextPhoto() {
-        let photoIndex = this.state.currPhotoIndex;
-        let photos = this.state.photos;
-        photoIndex = (photoIndex + 1) % photos.length;
-        this.setState({
-            currPhotoIndex: photoIndex
-        });
-    }
-
     openPhoto(photoIndex) {
         this.setState({
             currPhotoIndex: photoIndex
@@ -113,16 +95,14 @@ export default class PhotographyPage extends Component {
                             alt={'Photo title: ' + photo.title}></img>
                     )}
                 </div>
-                {/* full-page lightbox */}
-                { this.state.showLightbox && 
-                    <Lightbox onCloseRequest={ () => this.hideLightbox() }
-                        mainSrc={ this.state.photos[this.state.currPhotoIndex].url }
-                        // I would put function calls here, but React doesn't jive with them
-                        nextSrc={ this.state.photos[ (this.state.currPhotoIndex + 1) % this.state.photos.length ].url }
-                        prevSrc={ this.state.photos[ (this.state.currPhotoIndex - 1 + this.state.photos.length) % this.state.photos.length ].url }
-                        onMovePrevRequest={ () => this.showPrevPhoto() }
-                        onMoveNextRequest={ () => this.showNextPhoto() } />
-                }
+                <Lightbox open={ this.state.showLightbox }
+                        close={ () => this.hideLightbox() }
+                        slides={
+                            this.state.photos.map(photo => ({'src': photo.url}))
+                        }
+                        index={this.state.currPhotoIndex}
+                        animation={{ fade: 500, swipe: 500, easing: { fade: "ease", swipe: "ease-out", navigation: "ease-in-out" } }} />
+                
                 <p className="center">
                     { this.props.lang === 'es' ? 'Mira más fotos mías en ' : 'Check out more of my photos on ' }
                     <a href="https://www.flickr.com/photos/rusty_giraffe/">Flickr</a>.

@@ -20,11 +20,11 @@
     "react-code-blocks": "^0.1.6",
     "react-dom": "^18.3.1",
     "react-if": "^4.1.5",
-    "react-image-lightbox": "^5.1.0",
+    "yet-another-react-lightbox": "3.21.6",
     "react-pdf": "^9.1.1",
     "react-player": "^2.16.0",
     "html-react-parser": "^5.1.17",
-    "react-reveal": "^1.2.2",
+    "react-awesome-reveal": "^4.2.14",
     "react-router-dom": "^5.3.4",
     "react-scripts": "^5.0.1",
     "@teskon/react-slidedown": "^1.0.1"

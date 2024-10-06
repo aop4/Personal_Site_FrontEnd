@@ -1,18 +1,5 @@
 $gapBetweenThumbnails: 5px;
 
-/* adjust react-lightbox CSS */
-.ril-outer {
-    background-color: rgba(20, 20, 20, 0.98) !important;
-}
-
-.ril-toolbar {
-    background-color: transparent;
-}
-
-.ril-toolbar-left {
-    border-right: none !important;
-}
-
 /* mobile/tablet */
 @media only screen and (max-width: 899px) {
     .img-thumbnail {
