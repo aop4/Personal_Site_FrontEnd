@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { If, Then, Else } from 'react-if';
-import {SlideDown} from 'react-slidedown';
+import {SlideDown} from '@teskon/react-slidedown';
 import Downloader from 'js-file-downloader';
-import renderHTML from 'react-render-html';
+import parse from 'html-react-parser';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
-import 'react-slidedown/lib/slidedown.css';
+import '@teskon/react-slidedown/lib/slidedown.css';
 import './song-selector.css';
 
 import { BASE_URL } from '../../constants';
@@ -80,7 +80,7 @@ export default class SongSelector extends Component {
                 </div>
                 <SlideDown closed={ this.state.hideLyrics }>
                     <p className="lyrics">
-                        { renderHTML(this.props.song.lyrics) }
+                        { parse(this.props.song.lyrics) }
                     </p>
                 </SlideDown>
             </div>

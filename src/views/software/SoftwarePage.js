@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithubSquare } from '@fortawesome/free-brands-svg-icons';
-import { BASE_URL } from '../../constants';
 import { CodeBlock, github } from 'react-code-blocks';
 import './software-page.css';
+import { pingApiServer } from '../../utils';
 
 export default class SoftwarePage extends Component {
     render() {
@@ -109,14 +108,8 @@ export default class SoftwarePage extends Component {
         );
     }
 
-    /**
-     * After the page loads, this sends a request to the base URL. (To conserve
-     * resources, the back end sleeps when there's no traffic. This wakes it up
-     * so that other pages will load quickly, because this may be a common
-     * entrypoint to the site.)
-     */
     componentDidMount() {
-        axios.get(BASE_URL);
+        pingApiServer()
     }
 
 }

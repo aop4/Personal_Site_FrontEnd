@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { BASE_URL } from '../../constants';
+import { pingApiServer } from '../../utils';
 
 export default class Resume extends Component {
 
@@ -36,6 +35,6 @@ export default class Resume extends Component {
      * entrypoint to the site.)
      */
     componentDidMount() {
-        axios.get(BASE_URL);
+        pingApiServer()
     }
 }

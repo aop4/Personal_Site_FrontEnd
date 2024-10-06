@@ -15,9 +15,9 @@ jobs:
 
     - uses: actions/setup-node@v3
       with:
-        node-version: 14
+        node-version: 22
 
-    - run: npm install
+    - run: npm install --force
     
     - run: npm run build
 

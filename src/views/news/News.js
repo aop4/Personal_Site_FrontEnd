@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './news.css';
 import axios from 'axios';
 import dateFormat from 'dateformat';
-import renderHTML from 'react-render-html';
+import parse from 'html-react-parser';
 import { BASE_URL } from '../../constants';
 import LoadingScreen from '../loading-screen/LoadingScreen';
 import { If, Then, Else } from 'react-if';
@@ -67,10 +67,10 @@ export default class News extends Component {
                         </span>
                         <If condition={ this.props.lang === 'es' && item.spanish_text.length > 0 }>
                             <Then>
-                                { renderHTML(item.spanish_text) }
+                                { parse(item.spanish_text) }
                             </Then>
                             <Else>
-                                { renderHTML(item.text) }
+                                { parse(item.text) }
                             </Else>
                         </If>
                     </p>

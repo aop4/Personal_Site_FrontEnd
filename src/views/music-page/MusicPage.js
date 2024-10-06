@@ -6,7 +6,7 @@ import './music-page.css';
 import { BASE_URL } from '../../constants';
 import LoadingScreen from '../loading-screen/LoadingScreen';
 import { If, Then, Else } from 'react-if';
-import renderHTML from 'react-render-html';
+import parse from 'html-react-parser';
 
 export default class MusicPage extends Component {
 
@@ -48,10 +48,10 @@ export default class MusicPage extends Component {
     renderAlbumDescriptions(albums) {
         albums.forEach(album => {
             if (album.description) {
-                album.description = renderHTML(album.description);
+                album.description = parse(album.description);
             }
             if (album.spanish_desc) {
-                album.spanish_desc = renderHTML(album.spanish_desc);
+                album.spanish_desc = parse(album.spanish_desc);
             }
         });
     }
