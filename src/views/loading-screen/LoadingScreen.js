@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './loading-screen.css';
 
 /* A component that's a generic loading screen  */
@@ -54,9 +53,7 @@ export default class LoadingScreen extends Component {
     render() {
         return (
             <div className={ 'loading-container ' + (this.state.hideAll ? 'hidden':'') }>
-                <FontAwesomeIcon icon="peace"
-                    className={ "loading-icon " + (this.state.isLoading ? '':'hidden') }
-                    spin />
+                <i className={"fa-solid fa-peace loading-icon fa-spin" + (this.state.isLoading ? '':' hidden')} />
                 <p>{ this.state.message }</p>
             </div>
         );

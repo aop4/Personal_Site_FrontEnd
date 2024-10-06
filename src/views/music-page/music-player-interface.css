@@ -1,6 +1,5 @@
 .player-controls > button {
     color: #333;
-    font-size: 1.3em;
     margin: 1.3em 0em 2em 0em;
 }
 
@@ -21,4 +20,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.play-pause-btn {
+    font-size: 2em;
+}
+
+.prev-skip-btn {
+    font-size: 1.6em;
 }

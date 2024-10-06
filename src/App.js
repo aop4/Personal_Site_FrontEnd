@@ -7,21 +7,10 @@ import './App.css';
 import Contact from './views/contact/Contact';
 import Footer from './views/footer/Footer';
 import MusicPage from './views/music-page/MusicPage';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faPlay, faPause, faBackward, faForward, faPeace, faExpandArrowsAlt,
-  faChevronLeft, faChevronRight, faDownload, faCheck, faBabyCarriage, faBriefcase,
-  faCalculator, faSeedling, faBrain, faMicroscope, faDesktop, faCodeBranch,
-  faRocket, faCode, faMobileAlt, faMortarPestle, faMap, faEllipsisV, faMapSigns } from '@fortawesome/free-solid-svg-icons';
 import PhotographyPage from './views/photography/PhotographyPage';
 import SoftwarePage from './views/software/SoftwarePage';
 import BiographyPage from './views/biography/BiographyPage';
 import PageNotFound from './views/page-not-found/PageNotFound';
-
-// pre-load FontAwesome icons for use in project
-library.add(faPlay, faPause, faBackward, faForward, faPeace, faExpandArrowsAlt,
-  faChevronLeft, faChevronRight, faDownload, faCheck, faBabyCarriage, faBriefcase,
-  faCalculator, faSeedling, faBrain, faMicroscope, faCodeBranch, faDesktop,
-  faRocket, faCode, faMobileAlt, faMortarPestle, faMap, faEllipsisV, faMapSigns);
 
 class App extends Component {
 

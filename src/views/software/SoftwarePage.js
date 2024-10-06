@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithubSquare } from '@fortawesome/free-brands-svg-icons';
 import { CodeBlock, github } from 'react-code-blocks';
 import './software-page.css';
 import { pingApiServer } from '../../utils';
@@ -100,8 +98,7 @@ export default class SoftwarePage extends Component {
                 <div className="center">
                     <a href="https://github.com/aop4"
                         title="Follow the Octocat (GitHub)">
-                        <FontAwesomeIcon icon={ faGithubSquare }
-                            className="github-icon" />
+                        <i className="fa-brands fa-square-github github-icon"/>
                     </a>
                 </div>
             </div>

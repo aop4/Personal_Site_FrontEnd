@@ -3,7 +3,6 @@ import { If, Then, Else } from 'react-if';
 import {SlideDown} from '@teskon/react-slidedown';
 import Downloader from 'js-file-downloader';
 import parse from 'html-react-parser';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import '@teskon/react-slidedown/lib/slidedown.css';
 import './song-selector.css';
@@ -68,12 +67,11 @@ export default class SongSelector extends Component {
                                         onClick={ () => this.downloadSong(this.props.song) }
                                         title= { 'Download ' + this.props.song.title }
                                         className="download-button">
-                                    <FontAwesomeIcon icon="download"/>
+                                    <i className="fa-solid fa-download"/>
                                 </button>
                             </Then>
                             <Else>
-                                <FontAwesomeIcon icon="check" 
-                                    className="song-downloaded-checkmark"/>
+                                <i className="fa-solid fa-check song-downloaded-checkmark"/>
                             </Else>
                         </If>
                     </div>

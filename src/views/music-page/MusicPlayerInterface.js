@@ -4,7 +4,6 @@ import 'rc-slider/assets/index.css';
 import './music-player-interface.css';
 import ReactPlayer from 'react-player';
 import { BASE_URL } from '../../constants';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { If, Then, Else } from 'react-if';
 
 export default class MusicPlayerInterface extends Component {
@@ -91,16 +90,16 @@ export default class MusicPlayerInterface extends Component {
                     trackStyle={ {background: '#4a86e8'} }/>
                 <div className="player-controls">
                     <button aria-label="Play Previous Song" onClick={ () => this.props.playPrevSong() }>
-                        <FontAwesomeIcon icon="backward" />
+                        <i className="fa-solid fa-backward prev-skip-btn"/>
                     </button>
                     <button aria-label="Play or Pause Audio" onClick={ () => this.handlePlayPauseBtnClick() }>
                         <If condition={ this.state.playing }>
-                            <Then><FontAwesomeIcon icon="pause" /></Then>
-                            <Else><FontAwesomeIcon icon="play" /></Else>
+                            <Then><i className="fa-solid fa-pause play-pause-btn" /></Then>
+                            <Else><i className="fa-solid fa-play play-pause-btn"/></Else>
                         </If>
                     </button>
                     <button aria-label="Play Next Song" onClick={ () => this.props.handleSongSkip() }>
-                        <FontAwesomeIcon icon="forward" />
+                        <i className="fa-solid fa-forward prev-skip-btn"/>
                     </button>
                 </div>
             </div>

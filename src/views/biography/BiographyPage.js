@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { If, Then } from 'react-if';
 import Zoom from 'react-reveal/Zoom';
 import { BIOGRAPHY_ENTRIES } from './BiographyEntries';
@@ -23,17 +22,16 @@ export default class BiographyPage extends Component {
                             <Then>
                                 <Zoom bottom cascade>
                                     <div className="bio-entry-separator">
-                                        <FontAwesomeIcon icon="ellipsis-v" />
-                                        <FontAwesomeIcon icon="ellipsis-v" />
-                                        <FontAwesomeIcon icon="ellipsis-v" />
+                                        <i className="fa-solid fa-ellipsis-vertical bio-entry-dots"></i>
+                                        <i className="fa-solid fa-ellipsis-vertical bio-entry-dots"></i>
+                                        <i className="fa-solid fa-ellipsis-vertical bio-entry-dots"></i>
                                     </div>
                                 </Zoom>
                             </Then>
                         </If>
                         <Zoom bottom>
-                            <FontAwesomeIcon icon={entry.icon}
-                                className="biography-entry-icon"
-                                style={{ color: entry.iconColor }} />
+                            <i className={'biography-entry-icon fa-solid ' + entry.icon}
+                               style={{ color: entry.iconColor }}/>
                             <h1 className="biography-entry-year">{ entry.year }</h1>
                             {entry.paragraphs.map((paragraph, index) => 
                                 <p className="biography-entry-text" key={index}>{ paragraph }</p>

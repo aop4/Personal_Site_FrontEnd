@@ -23,14 +23,16 @@
 }
 
 .download-button {
-    color: #888;
+    color: #777;
     cursor: pointer;
 }
 
 .song-downloaded-checkmark {
     color: #080;
+    padding-left: 10px;
 }
 
 .song-downloaded-checkmark, .download-button {
     margin-left: 1em;
+    font-size: 1.05em;
 }

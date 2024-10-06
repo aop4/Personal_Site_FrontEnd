@@ -24,8 +24,13 @@
 }
 
 .bio-entry-separator {
-    font-size: 3.3em;
-    padding: 1em 0;
+    font-size: 3.8em;
+    padding: 0.8em 0;
     color: #37474f;
     opacity: 0.5;
+}
+
+.bio-entry-dots {
+    padding: 0 3px;
+    -webkit-text-stroke: 2px;
 }
