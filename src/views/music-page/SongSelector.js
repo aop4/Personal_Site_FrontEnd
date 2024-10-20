@@ -55,7 +55,7 @@ export default class SongSelector extends Component {
                         { this.props.song.title }
                     </button>
                     <div>
-                        <If condition={ this.props.song.lyrics.length > 0 }>
+                        <If condition={ !!this.props.song.lyrics }>
                             <Then>
                                 <button className="lyrics-btn"
                                     onClick={ () => this.toggleLyrics() }>Lyrics</button>
@@ -78,7 +78,7 @@ export default class SongSelector extends Component {
                 </div>
                 <SlideDown closed={ this.state.hideLyrics }>
                     <p className="lyrics">
-                        { parse(this.props.song.lyrics) }
+                        { parse(this.props.song.lyrics || '') }
                     </p>
                 </SlideDown>
             </div>

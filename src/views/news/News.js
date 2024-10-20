@@ -65,12 +65,12 @@ export default class News extends Component {
                         <span className="date-string">
                             { this.props.lang === 'es' ? item.spanishDateString : item.dateString} •&nbsp;
                         </span>
-                        <If condition={ this.props.lang === 'es' && item.spanish_text.length > 0 }>
+                        <If condition={ this.props.lang === 'es' && item.spanish_text }>
                             <Then>
-                                { parse(item.spanish_text) }
+                                { parse(item.spanish_text || '') }
                             </Then>
                             <Else>
-                                { parse(item.text) }
+                                { parse(item.text || '') }
                             </Else>
                         </If>
                     </p>

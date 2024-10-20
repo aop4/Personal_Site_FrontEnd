@@ -48,10 +48,10 @@ export default class MusicPage extends Component {
     renderAlbumDescriptions(albums) {
         albums.forEach(album => {
             if (album.description) {
-                album.description = parse(album.description);
+                album.description = parse(album.description || '');
             }
             if (album.spanish_desc) {
-                album.spanish_desc = parse(album.spanish_desc);
+                album.spanish_desc = parse(album.spanish_desc || '');
             }
         });
     }
