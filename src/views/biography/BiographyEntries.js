@@ -8,7 +8,7 @@ class BiographyEntry {
 }
 
 export const BIOGRAPHY_ENTRIES = [
-    new BiographyEntry('1995', 'fa-baby-carriage', '#1565c0',
+    new BiographyEntry('1995', 'fa-baby-carriage', '#95B7DF',
         ["I was born. The more I say about this, the greater the risk of identity theft, so I’ll just leave it at that."]
     ),
     new BiographyEntry('2008', 'fa-briefcase', '#4e342e',
