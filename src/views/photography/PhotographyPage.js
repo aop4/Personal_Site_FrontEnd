@@ -2,17 +2,16 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { BASE_URL } from '../../constants';
 import LoadingScreen from '../loading-screen/LoadingScreen';
-import Lightbox from 'yet-another-react-lightbox';
+import PhotoAlbum from './PhotoAlbum';
 
 import './photography-page.scss';
-import "yet-another-react-lightbox/styles.css";
 
 export default class PhotographyPage extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            photos: [],
+            albums: [],
             didLoadPhotos: false,
             currPhotoIndex: 0
         }
@@ -33,9 +32,8 @@ export default class PhotographyPage extends Component {
         axios.get(BASE_URL + '/photos')
         .then((resp) => {
             this.loadingScreen.current.onLoadingSucceeded();
-            let photos = resp.data.photo;
             this.setState({
-                photos: photos,
+                albums: resp.data,
                 didLoadPhotos: true
             });
             this.setPhotoUrls();
@@ -49,37 +47,18 @@ export default class PhotographyPage extends Component {
      * full URLs).
      */
     setPhotoUrls() {
-        let photos = this.state.photos;
-        photos.forEach((photo) => {
-            // URL structure and image size details: https://www.flickr.com/services/api/misc.urls.html
-            let url = `http://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_b.jpg`;
-            photo.url = url;
-        });
-        this.setState({
-            photos: photos,
-            showLightbox: false
-        });
-    }
-
-    showLightbox() {
-        if (this.state.didLoadPhotos) {
-            this.setState({
-                showLightbox: true
+        let albums = this.state.albums;
+        albums.forEach((album) => {
+            album.photo.forEach((photo) => {
+                // URL structure and image size details: https://www.flickr.com/services/api/misc.urls.html
+                let url = `http://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_b.jpg`;
+                photo.url = url;
             });
-        }
-    }
-
-    hideLightbox() {
+        })
         this.setState({
+            albums: albums,
             showLightbox: false
         });
-    }
-
-    openPhoto(photoIndex) {
-        this.setState({
-            currPhotoIndex: photoIndex
-        });
-        this.showLightbox();
     }
 
     render() {
@@ -87,22 +66,11 @@ export default class PhotographyPage extends Component {
             <div className="photos-page">
                 <LoadingScreen ref={ this.loadingScreen }>
                 </LoadingScreen>
-                <div className="thumbnail-container">
-                    { this.state.photos.map((photo, index) =>
-                        <img src={photo.url}
-                            className='img-thumbnail'
-                            onClick={ () => this.openPhoto(index) }
-                            alt={'Photo title: ' + photo.title}></img>
-                    )}
-                </div>
-                <Lightbox open={ this.state.showLightbox }
-                        close={ () => this.hideLightbox() }
-                        slides={
-                            this.state.photos.map(photo => ({'src': photo.url}))
-                        }
-                        index={this.state.currPhotoIndex}
-                        animation={{ fade: 500, swipe: 500, easing: { fade: "ease", swipe: "ease-out", navigation: "ease-in-out" } }} />
-                
+                { this.state.albums.map((album) =>
+                    <PhotoAlbum album={album}
+                                key={album.id}>
+                    </PhotoAlbum>
+                )}
                 <p className="center">
                     { this.props.lang === 'es' ? 'Mira más fotos mías en ' : 'Check out more of my photos on ' }
                     <a href="https://www.flickr.com/photos/rusty_giraffe/">Flickr</a>.
