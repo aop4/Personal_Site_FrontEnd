@@ -20,7 +20,8 @@ class Sidebar extends Component {
         let navLinks = [
             new SidebarLink('Home', 'Inicio', '/', '/es'),
             new SidebarLink('Resume', 'Resumen', '/resume', '/resume/es'),
-            new SidebarLink('Biography', 'Biografía', '/biography', '/biography/es'),
+            new SidebarLink('Bio', 'Biografía', '/biography', '/biography/es'),
+            new SidebarLink('Blog', 'Blog', '/blog/all', '/blog/all/es'),
             new SidebarLink('Photos', 'Fotos', '/photography', '/photography/es'),
             new SidebarLink('Music', 'Música', '/music', '/music/es'),
             new SidebarLink('Contact', 'Contáctame', '/contact', '/contact/es')
@@ -30,36 +31,39 @@ class Sidebar extends Component {
         };
     }
 
-    getLinkFor(linkData) {
+    getLinkFor(sidebarLink) {
         // if current lang is spanish
         if (this.props.lang === 'es') {
-            return linkData.spanishHref;
+            return sidebarLink.spanishHref;
         }
-        return linkData.englishHref;
+        return sidebarLink.englishHref;
     }
 
-    /* Returns true if the navigation link to the sidebar item `linkData` is a 
+    /* Returns true if the navigation link to the sidebar item `sidebarLink` is a 
     link to the current page and so should be highlighted. */
-    isActiveNavLink(linkData) {
+    isActiveNavLink(sidebarLink) {
         let currURL = this.props.location.pathname; // current URL path
-        return (this.props.lang === 'en' && currURL === linkData.englishHref) ||
-            (this.props.lang === 'es' && currURL === linkData.spanishHref);
+        if (sidebarLink.englishText === 'Blog') {
+            return currURL.startsWith('/blog/');
+        } else {
+            return currURL === sidebarLink.englishHref || currURL === sidebarLink.spanishHref;
+        }
     }
     
     render() {
         return (
             <ul id="sidebar-links">
-                {this.state.navLinks.map((linkData, index) => 
-                    <li className="sidebar-link" key={ linkData.englishHref }>
-                        <Link to={ this.getLinkFor(linkData) }
+                {this.state.navLinks.map(sidebarLink => 
+                    <li className="sidebar-link" key={ sidebarLink.englishHref }>
+                        <Link to={ this.getLinkFor(sidebarLink) }
                             onClick={ this.props.closeBurgerMenu }
-                            className={ this.isActiveNavLink(linkData) ? 'active-nav-link':'' }>
+                            className={ this.isActiveNavLink(sidebarLink) ? 'active-nav-link':'' }>
                             <If condition={this.props.lang === 'es'}>
                                 <Then>
-                                    { linkData.spanishText }
+                                    { sidebarLink.spanishText }
                                 </Then>
                                 <Else>
-                                    { linkData.englishText }
+                                    { sidebarLink.englishText }
                                 </Else>
                             </If>
                         </Link>
