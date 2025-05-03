@@ -8,7 +8,6 @@ import Contact from './views/contact/Contact';
 import Footer from './views/footer/Footer';
 import MusicPage from './views/music-page/MusicPage';
 import PhotographyPage from './views/photography/PhotographyPage';
-import SoftwarePage from './views/software/SoftwarePage';
 import BiographyPage from './views/biography/BiographyPage';
 import PageNotFound from './views/page-not-found/PageNotFound';
 import BlogMainPage from './views/blog/blog-main-page/BlogMainPage';
@@ -47,11 +46,6 @@ class App extends Component {
                 <Route path='/photography/:lang(|es)?' render={() => (
                     <div className="App">
                       <Base content={ <PhotographyPage /> } title="Photography" />
-                    </div>
-                )}/>
-                <Route path='/software/:lang(|es)?' render={() => (
-                    <div className="App">
-                      <Base content={ <SoftwarePage /> } title="Software Engineering Philosophy" />
                     </div>
                 )}/>
                 <Route path='/biography/:lang(|es)?' render={() => (
