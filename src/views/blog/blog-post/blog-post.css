@@ -1,0 +1,10 @@
+.blog-link {
+  display: block;
+  padding: 20px;
+}
+
+.post-publish-date {
+  text-align: right;
+  color: #555;
+  margin: 2px;
+}
