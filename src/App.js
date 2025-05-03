@@ -11,6 +11,8 @@ import PhotographyPage from './views/photography/PhotographyPage';
 import SoftwarePage from './views/software/SoftwarePage';
 import BiographyPage from './views/biography/BiographyPage';
 import PageNotFound from './views/page-not-found/PageNotFound';
+import BlogMainPage from './views/blog/blog-main-page/BlogMainPage';
+import BlogPost from './views/blog/blog-post/BlogPost';
 
 class App extends Component {
 
@@ -55,6 +57,16 @@ class App extends Component {
                 <Route path='/biography/:lang(|es)?' render={() => (
                     <div className="App">
                       <Base content={ <BiographyPage /> } title="Biography" />
+                    </div>
+                )}/>
+                <Route path='/blog/all/:lang(|es)?' render={() => (
+                    <div className="App">
+                      <Base content={ <BlogMainPage /> } title="Blog" />
+                    </div>
+                )}/>
+                <Route path='/blog/:path/:lang(|es)?' render={() => (
+                    <div className="App">
+                      <Base content={ <BlogPost /> } title="Blog" />
                     </div>
                 )}/>
                 <Route path='*' render={() => (
