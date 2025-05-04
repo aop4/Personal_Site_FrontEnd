@@ -36,7 +36,7 @@ class BlogPost extends Component {
             if (this.state.blogPost.title) {
                 document.title = this.state.blogPost.title;
             }
-        }, err => {
+        }, (err) => {
             // If the post wasn't found, make the loading indicator disappear and display the "Not Found" page.
             this.loadingScreen.current.onLoadingSucceeded();
             this.setState({
@@ -64,7 +64,9 @@ class BlogPost extends Component {
                         </div>
                     </Else>
                 </If>
-                <a className="blog-link center" href="/blog/all"><i class="fa-regular fa-circle-left"></i> Back to blog</a>
+                <div className="center">
+                    <a className="blog-link" href="/blog/all"><i class="fa-regular fa-circle-left"></i> Back to blog</a>
+                </div>
             </div>
         )
     }
