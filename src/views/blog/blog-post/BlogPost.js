@@ -7,6 +7,8 @@ import dateFormat from 'dateformat';
 import LoadingScreen from "../../loading-screen/LoadingScreen";
 
 import './blog-post.css'
+import { Else, If, Then } from "react-if";
+import PageNotFound from "../../page-not-found/PageNotFound";
 
 class BlogPost extends Component {
 
@@ -35,7 +37,11 @@ class BlogPost extends Component {
                 document.title = this.state.blogPost.title;
             }
         }, err => {
-            this.loadingScreen.current.onLoadingFailed();
+            // If the post wasn't found, make the loading indicator disappear and display the "Not Found" page.
+            this.loadingScreen.current.onLoadingSucceeded();
+            this.setState({
+                failedToLoad: true
+            });
         });
     }
 
@@ -43,14 +49,22 @@ class BlogPost extends Component {
         return (
             <div>
                 <LoadingScreen ref={ this.loadingScreen } />
-                <a className="blog-link" href="/blog/all"><i class="fa-regular fa-circle-left"></i> Back to blog</a>
-                <div class="text-container">
-                    <h1>{this.state.blogPost.title}</h1>
-                    <Markdown>{this.state.blogPost.body_markdown}</Markdown>
-                    <p className="post-publish-date">Published: {dateFormat(this.state.blogPost.created_at, 'mmmm d, yyyy')}</p>
-                    <p className="post-publish-date">Updated: {dateFormat(this.state.blogPost.updated_at, 'mmmm d, yyyy')}</p>
-                    <a className="blog-link center" href="/blog/all"><i class="fa-regular fa-circle-left"></i> Back to blog</a>
-                </div>
+
+                <If condition={this.state.failedToLoad}>
+                    <Then>
+                        <PageNotFound/>
+                    </Then>
+                    <Else>
+                        <a className="blog-link" href="/blog/all"><i class="fa-regular fa-circle-left"></i> Back to blog</a>
+                        <div class="text-container">
+                            <h1>{this.state.blogPost.title}</h1>
+                            <Markdown>{this.state.blogPost.body_markdown}</Markdown>
+                            <p className="post-publish-date">Published: {dateFormat(this.state.blogPost.created_at, 'mmmm d, yyyy')}</p>
+                            <p className="post-publish-date">Updated: {dateFormat(this.state.blogPost.updated_at, 'mmmm d, yyyy')}</p>
+                        </div>
+                    </Else>
+                </If>
+                <a className="blog-link center" href="/blog/all"><i class="fa-regular fa-circle-left"></i> Back to blog</a>
             </div>
         )
     }
