@@ -29,7 +29,7 @@ export default class Contact extends Component {
         .then((res) => {
             this.setState({ message: "✔ Your message has been sent. It travels o'er the hills of Middle Earth." });
         }, (err) => {
-            alert("Your message couldn't be sent. Try shooting an email to andrewpuglionesi@gmail.com");
+            alert("Your message couldn't be sent. Try shooting an email to andrewpuglionesi@protonmail.com");
         });
     }
 
