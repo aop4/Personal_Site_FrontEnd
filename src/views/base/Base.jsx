@@ -3,6 +3,7 @@ import Header from '../header/Header';
 import './base.css';
 import SidebarWithRouter from '../sidebar/Sidebar';
 import {withRouter} from 'react-router-dom';
+import i18n from '../../i18n';
 
 class BaseComponent extends Component {
 
@@ -15,6 +16,7 @@ class BaseComponent extends Component {
         if (this.props.match.params.lang === 'es') {
             this.state.lang = "es";
         }
+        i18n.changeLanguage(this.state.lang)
     }
 
     componentDidMount() {
@@ -39,6 +41,8 @@ class BaseComponent extends Component {
         this.setState({
             lang: newLanguage
         });
+
+        i18n.changeLanguage(newLanguage);
     }
     
     render() {

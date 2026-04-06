@@ -5,6 +5,7 @@ import LoadingScreen from '../loading-screen/LoadingScreen';
 import PhotoAlbum from './PhotoAlbum';
 
 import './photography-page.scss';
+import { Trans } from 'react-i18next';
 
 export default class PhotographyPage extends Component {
 
@@ -72,7 +73,7 @@ export default class PhotographyPage extends Component {
                     </PhotoAlbum>
                 )}
                 <p className="center">
-                    { this.props.lang === 'es' ? 'Mira más fotos mías en ' : 'Check out more of my photos on ' }
+                    <Trans i18nKey="photos.flickr.intro"/>
                     <a href="https://www.flickr.com/photos/rusty_giraffe/">Flickr</a>.
                 </p>
             </div>

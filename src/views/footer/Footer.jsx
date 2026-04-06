@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { If, Then, Else } from 'react-if';
+import { Component } from 'react';
 import './footer.css';
+import { Trans } from 'react-i18next';
 
 export default class Footer extends Component {
     render() {
@@ -16,14 +16,7 @@ export default class Footer extends Component {
                 <a href="https://www.flickr.com/photos/rusty_giraffe"> Flickr</a>
 
                 <p>
-                    <If condition={ this.props.lang === 'es' }>
-                        <Then>
-                            Creado de cero con React, Ruby on Rails, y &lt;3.
-                        </Then>
-                        <Else>
-                            Built from scratch with React, Ruby on Rails, and &lt;3.
-                        </Else>
-                    </If>
+                    <Trans i18nKey="footer.text"/>
                 </p>
             </footer>
         );

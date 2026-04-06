@@ -5,8 +5,9 @@ import SongSelector from './SongSelector';
 import './music-page.css';
 import { BASE_URL } from '../../constants';
 import LoadingScreen from '../loading-screen/LoadingScreen';
-import { If, Then, Else } from 'react-if';
+import { If, Then } from 'react-if';
 import parse from 'html-react-parser';
+import { Trans } from 'react-i18next';
 
 export default class MusicPage extends Component {
 
@@ -141,15 +142,12 @@ export default class MusicPage extends Component {
     render() {
         return (
             <div className="music-container">
-                <h1>{ this.props.lang === 'es' ? 'Álbumes':'Albums' }</h1>
-                <If condition={ this.props.lang === 'es' }>
-                    <Then>
-                        <p>Escribo y grabo canciones para divertirme. Si le gustan éstas, es posible que disfrute de escuchar a <a href="https://bloomcliffe.bandcamp.com">Bloomcliffe</a>.</p>
-                    </Then>
-                    <Else>
-                        <p>I write and record music for kicks. You may also like the songs I write as <a href="https://bloomcliffe.bandcamp.com">Bloomcliffe</a>.</p>
-                    </Else>
-                </If>
+                <h1>
+                    <Trans i18nKey="music.title"/>
+                </h1>
+                <p>
+                    <Trans i18nKey="music.intro" components={{ a: <a/> }}/>
+                </p>
                 {this.state.albums.map((album) =>
                     <button key={ album.id }
                         onClick={ () => this.setCurrentAlbum(album) }

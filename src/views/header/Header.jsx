@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { scaleDown as Menu } from 'react-burger-menu';
 import './header.css';
 import Sidebar from '../sidebar/Sidebar';
 import { Link } from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
+import { Translation } from 'react-i18next';
 
 class BaseComponent extends Component {
 
@@ -38,22 +39,25 @@ class BaseComponent extends Component {
     }
     
     render() {
-        return (    
-            <div id="header" className="header">
-                <Menu id="burger-menu"
-                    onStateChange={ (menuState) => this.toggleBurgerMenuVisible(menuState) }
-                    isOpen={ this.state.isBurgerMenuOpen }
-                    menuClassName='bm-menu'
-                    crossButtonClassName='bm-cross-button'>
-                    <Sidebar lang={ this.props.lang } closeBurgerMenu={ this.closeBurgerMenu.bind(this) } />
-                </Menu>
-                <Link className="lang-toggle" 
-                    to={ this.changeLanguageLink() }
-                    onClick={ this.props.changeLanguage }
-                    title={ this.props.lang === 'es' ? 'Cambiar de lengua' : 'Change language' } >
-                    { this.props.lang === 'en' ? 'Español' : 'English' }
-                </Link>
-            </div>
+        return (
+            <Translation>
+            {(t) =>
+                <div id="header" className="header">
+                    <Menu id="burger-menu"
+                        onStateChange={ (menuState) => this.toggleBurgerMenuVisible(menuState) }
+                        isOpen={ this.state.isBurgerMenuOpen }
+                        menuClassName='bm-menu'
+                        crossButtonClassName='bm-cross-button'>
+                        <Sidebar lang={ this.props.lang } closeBurgerMenu={ this.closeBurgerMenu.bind(this) } />
+                    </Menu>
+                    <Link className="lang-toggle" 
+                        to={ this.changeLanguageLink() }
+                        onClick={ this.props.changeLanguage }
+                        title={ t('language.toggle.hover.text') } >
+                        { t('language.toggle.title') }
+                    </Link>
+                </div>
+            }</Translation>
         );
     }
 }

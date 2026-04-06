@@ -3,6 +3,7 @@ import 'ie-array-find-polyfill'; // polyfill for IE
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import './i18n';
 
 import './index.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';

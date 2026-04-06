@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import './contact.css';
 import axios from 'axios';
 import { BASE_URL } from '../../constants';
+import { Translation } from 'react-i18next';
 
 export default class Contact extends Component {
 
@@ -35,25 +36,29 @@ export default class Contact extends Component {
 
     render() {
         return (
-            <div className="contact-container">
-                <h1>{ this.props.lang === 'es' ? 'Contáctame' : 'Contact me'}</h1>
-                <form id="contact-form"
-                    onSubmit={ (event) => this.handleSubmit(event) }>
-                    <input required type="text" 
-                        name="name"
-                        placeholder={ this.props.lang === 'es' ? "  Su nombre" : "  Your name" }/>
-                    <input required type="email" 
-                        name="emailAddress"
-                        placeholder={ this.props.lang === 'es' ? "  Su dirección de correo electrónico" : "  Your email address" } />
-                    <textarea placeholder={ this.props.lang === 'es' ? " Escriba su mensaje aquí" : " Write your message here" }
-                        name="comment"
-                        rows="7" />
-                    <p className="message">{ this.state.message }</p>
-                    <button className="send-btn">
-                        { this.props.lang === 'es' ? "  Enviar" : "  Send" }
-                    </button>
-                </form>
-            </div>
+            <Translation>
+            { (t) =>
+                <div className="contact-container">
+                    <h1>{ t('contact.title') }</h1>
+                    <form id="contact-form"
+                        onSubmit={ (event) => this.handleSubmit(event) }>
+                        <input required type="text" 
+                            name="name"
+                            placeholder={ t('contact.hints.name') }/>
+                        <input required type="email" 
+                            name="emailAddress"
+                            placeholder={ t('contact.hints.email') } />
+                        <textarea placeholder={ t('contact.hints.message') }
+                            name="comment"
+                            rows="7" />
+                        <p className="message">{ this.state.message }</p>
+                        <button className="send-btn">
+                            { t('contact.send') }
+                        </button>
+                    </form>
+                </div>
+            }
+            </Translation>
         );
     }
 }
