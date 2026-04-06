@@ -1,3 +1,14 @@
+/*
+  A flex container to push the footer to the bottom of the screen even if the page
+  contents does not extend that far
+*/
+.footer-pusher {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .main-container {
     max-width: 100vw;
 }

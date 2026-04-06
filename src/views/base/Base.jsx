@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../header/Header';
+import Footer from '../footer/Footer';
 import './base.css';
 import SidebarWithRouter from '../sidebar/Sidebar';
 import {withRouter} from 'react-router-dom';
@@ -47,20 +48,23 @@ class BaseComponent extends Component {
     
     render() {
         return (
-            <div>
-                <div className="main-container">
-                    <Header lang={ this.state.lang }
-                        changeLanguage={ this.changeLanguage.bind(this) }/>
-                    <div className="flex-container">
-                        <nav className="sidebar">
-                            <SidebarWithRouter lang={ this.state.lang } />
-                        </nav>
-                        <div className="content">
-                            {/* component passed in as main content */ }
-                            {React.cloneElement(this.props.content, {lang: this.state.lang}) }
+            <div className="footer-pusher">
+                <div>
+                    <div className="main-container">
+                        <Header lang={ this.state.lang }
+                            changeLanguage={ this.changeLanguage.bind(this) }/>
+                        <div className="flex-container">
+                            <nav className="sidebar">
+                                <SidebarWithRouter lang={ this.state.lang } />
+                            </nav>
+                            <div className="content">
+                                {/* component passed in as main content */ }
+                                {React.cloneElement(this.props.content, {lang: this.state.lang}) }
+                            </div>
                         </div>
                     </div>
                 </div>
+                <Footer/>
             </div>
         );
     }
