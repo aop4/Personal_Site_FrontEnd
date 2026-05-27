@@ -3,12 +3,13 @@ import './sidebar.css';
 import { Link } from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
 import { Trans } from 'react-i18next';
+import i18n from '../../i18n';
 
 class SidebarLink {
-    constructor(displayTextKey, englishHref, spanishHref) {
+    constructor(displayTextKey, basePath, matchingPaths) {
         this.displayTextKey = displayTextKey;
-        this.englishHref = englishHref;
-        this.spanishHref = spanishHref;
+        this.basePath = basePath;
+        this.matchingPaths = matchingPaths;
     }
 }
 
@@ -17,13 +18,13 @@ class Sidebar extends Component {
     constructor(props) {
         super(props)
         let navLinks = [
-            new SidebarLink('sidebar.home', '/', '/es'),
-            new SidebarLink('sidebar.resume', '/resume', '/resume/es'),
-            new SidebarLink('sidebar.bio', '/biography', '/biography/es'),
-            new SidebarLink('sidebar.blog', '/blog/all', '/blog/all/es'),
-            new SidebarLink('sidebar.photos', '/photography', '/photography/es'),
-            // new SidebarLink('sidebar.music', '/music', '/music/es'),
-            new SidebarLink('sidebar.contact', '/contact', '/contact/es')
+            new SidebarLink('sidebar.home', '', /^\/[a-z]{0,2}$/),
+            new SidebarLink('sidebar.resume', '/resume', /^\/resume/),
+            new SidebarLink('sidebar.bio', '/biography', /^\/biography/),
+            new SidebarLink('sidebar.blog', '/blog/all', /^\/blog/),
+            new SidebarLink('sidebar.photos', '/photography', /^\/photography/),
+            // new SidebarLink('sidebar.music', '/music', /^\/music/),
+            new SidebarLink('sidebar.contact', '/contact', /^\/contact/)
         ];
         this.state = {
             navLinks: navLinks
@@ -31,29 +32,25 @@ class Sidebar extends Component {
     }
 
     getLinkFor(sidebarLink) {
-        // if current lang is spanish
-        if (this.props.lang === 'es') {
-            return sidebarLink.spanishHref;
+        if (i18n.language === 'en') {
+            return sidebarLink.basePath;
+        } else {
+            return `${sidebarLink.basePath}/${i18n.language}`;
         }
-        return sidebarLink.englishHref;
     }
 
     /* Returns true if the navigation link to the sidebar item `sidebarLink` is a 
     link to the current page and so should be highlighted. */
     isActiveNavLink(sidebarLink) {
         let currURL = this.props.location.pathname; // current URL path
-        if (sidebarLink.englishText === 'Blog') {
-            return currURL.startsWith('/blog/');
-        } else {
-            return currURL === sidebarLink.englishHref || currURL === sidebarLink.spanishHref;
-        }
+        return sidebarLink.matchingPaths.test(currURL);
     }
     
     render() {
         return (
             <ul id="sidebar-links">
                 {this.state.navLinks.map(sidebarLink => 
-                    <li className="sidebar-link" key={ sidebarLink.englishHref }>
+                    <li className="sidebar-link" key={ sidebarLink.basePath }>
                         <Link to={ this.getLinkFor(sidebarLink) }
                             onClick={ this.props.closeBurgerMenu }
                             className={ this.isActiveNavLink(sidebarLink) ? 'active-nav-link':'' }>
