@@ -23,7 +23,7 @@ class Sidebar extends Component {
             new SidebarLink('Bio', 'Biografía', '/biography', '/biography/es'),
             new SidebarLink('Blog', 'Blog', '/blog/all', '/blog/all/es'),
             new SidebarLink('Photos', 'Fotos', '/photography', '/photography/es'),
-            new SidebarLink('Music', 'Música', '/music', '/music/es'),
+            // new SidebarLink('Music', 'Música', '/music', '/music/es'),
             new SidebarLink('Contact', 'Contáctame', '/contact', '/contact/es')
         ];
         this.state = {

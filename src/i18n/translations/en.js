@@ -4,7 +4,7 @@ export default {
         'title': 'About Me',
         'part.1': 'Hi there! I am a software engineer based in Philadelphia, Pennsylvania.',
         'part.2': 'I consider myself a generalist with experience at both ends in a variety of languages and frameworks. I am passionate about learning new things and obsessed with writing maintainable code. Check out the <a href="/blog/all">blog</a> for some of my thoughts on the craft.',
-        'part.3': 'My hobbies include photography and writing music, and this website reflects a bit of everything. It\'s a living document, here to tie all my work together, organize it, and develop alongside me. Go ahead and explore!'
+        'part.3': 'My hobbies include photography and writing, and this website reflects a bit of everything. It\'s a living document, here to tie all my work together, organize it, and develop alongside me. Go ahead and explore!'
     },
     'news.title': 'News',
     'footer.text': 'Built from scratch with React, Ruby on Rails, and <3.',

@@ -4,7 +4,7 @@ export default {
         'title': 'Sobre Mí',
         'part.1': '¡Hola! Soy un ingeniero de software que vive en Philadelphia, Pennsylvania.',
         'part.2': 'En cuanto a mi carrera de ingeniería, me considero un generalista: he trabajado en el front-end y el back-end de sistemas diferentes, y tengo experiencia con una variedad de lenguas y entornos de trabajo. Me apasiona aprender cosas nuevas, y estoy obsesionado con escribir código legible. Mira al <a href="/blog/all/es">blog</a> para leer más sobre mi carrera.',
-        'part.3': 'También disfruto tomar fotos y escribir música, y este sitio refleja un poco de todo. Es un documento vivo. Existe para mostrar todo mi trabajo en un lugar, organizar ese trabajo, y desarrollar junto conmigo.'
+        'part.3': 'También disfruto tomar fotos y escribir, y este sitio refleja un poco de todo. Es un documento vivo. Existe para mostrar todo mi trabajo en un lugar, organizar ese trabajo, y desarrollar junto conmigo.'
     },
     'news.title': 'Noticias',
     'footer.text': 'Creado de cero con React, Ruby on Rails, y <3.',

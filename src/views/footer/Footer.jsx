@@ -11,9 +11,7 @@ export default class Footer extends Component {
                 <a href="https://www.google.com/search?q=Andrew+Puglionesi"
                     target="_blank"
                     rel="noopener noreferrer"> Google me
-                </a> •
-                <a href="https://www.youtube.com/channel/UCbTleumNUKaZeGD8OdSlVqA"> YouTube</a> •
-                <a href="https://www.flickr.com/photos/rusty_giraffe"> Flickr</a>
+                </a>
 
                 <p>
                     <Trans i18nKey="footer.text"/>
