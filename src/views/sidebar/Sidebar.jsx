@@ -20,8 +20,8 @@ class Sidebar extends Component {
         let navLinks = [
             new SidebarLink('sidebar.home', '', /^\/[a-z]{0,2}$/),
             new SidebarLink('sidebar.resume', '/resume', /^\/resume/),
-            new SidebarLink('sidebar.bio', '/biography', /^\/biography/),
             new SidebarLink('sidebar.blog', '/blog/all', /^\/blog/),
+            new SidebarLink('sidebar.bio', '/biography', /^\/biography/),
             new SidebarLink('sidebar.photos', '/photography', /^\/photography/),
             // new SidebarLink('sidebar.music', '/music', /^\/music/),
             new SidebarLink('sidebar.contact', '/contact', /^\/contact/)
