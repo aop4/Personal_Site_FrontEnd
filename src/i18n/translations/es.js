@@ -25,6 +25,15 @@ export default {
     'language.toggle': {
       'hover.text': 'Cambiar de lengua',
       'title': 'English'
+    },
+    'sidebar': {
+      'home': 'Inicio',
+      'resume': 'Resumen',
+      'bio': 'Biografía',
+      'blog': 'Blog',
+      'photos': 'Fotos',
+      'music': 'Música',
+      'contact': 'Contáctame'
     }
   }
 }

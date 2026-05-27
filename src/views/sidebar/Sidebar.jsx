@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import './sidebar.css';
-import { If, Then, Else } from 'react-if';
 import { Link } from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
+import { Trans } from 'react-i18next';
 
 class SidebarLink {
-    constructor(englishText, spanishText, englishHref, spanishHref) {
-        this.englishText = englishText;
-        this.spanishText = spanishText;
+    constructor(displayTextKey, englishHref, spanishHref) {
+        this.displayTextKey = displayTextKey;
         this.englishHref = englishHref;
         this.spanishHref = spanishHref;
     }
@@ -18,13 +17,13 @@ class Sidebar extends Component {
     constructor(props) {
         super(props)
         let navLinks = [
-            new SidebarLink('Home', 'Inicio', '/', '/es'),
-            new SidebarLink('Resume', 'Resumen', '/resume', '/resume/es'),
-            new SidebarLink('Bio', 'Biografía', '/biography', '/biography/es'),
-            new SidebarLink('Blog', 'Blog', '/blog/all', '/blog/all/es'),
-            new SidebarLink('Photos', 'Fotos', '/photography', '/photography/es'),
-            // new SidebarLink('Music', 'Música', '/music', '/music/es'),
-            new SidebarLink('Contact', 'Contáctame', '/contact', '/contact/es')
+            new SidebarLink('sidebar.home', '/', '/es'),
+            new SidebarLink('sidebar.resume', '/resume', '/resume/es'),
+            new SidebarLink('sidebar.bio', '/biography', '/biography/es'),
+            new SidebarLink('sidebar.blog', '/blog/all', '/blog/all/es'),
+            new SidebarLink('sidebar.photos', '/photography', '/photography/es'),
+            // new SidebarLink('sidebar.music', '/music', '/music/es'),
+            new SidebarLink('sidebar.contact', '/contact', '/contact/es')
         ];
         this.state = {
             navLinks: navLinks
@@ -58,14 +57,7 @@ class Sidebar extends Component {
                         <Link to={ this.getLinkFor(sidebarLink) }
                             onClick={ this.props.closeBurgerMenu }
                             className={ this.isActiveNavLink(sidebarLink) ? 'active-nav-link':'' }>
-                            <If condition={this.props.lang === 'es'}>
-                                <Then>
-                                    { sidebarLink.spanishText }
-                                </Then>
-                                <Else>
-                                    { sidebarLink.englishText }
-                                </Else>
-                            </If>
+                            <Trans i18nKey={ sidebarLink.displayTextKey }/>
                         </Link>
                     </li>
                 )}
