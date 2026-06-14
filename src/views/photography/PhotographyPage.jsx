@@ -7,14 +7,6 @@ import PhotoAlbum from './PhotoAlbum';
 import './photography-page.scss';
 import { Trans } from 'react-i18next';
 
-// Flickr image size documentation: https://www.flickr.com/services/api/misc.urls.html
-const PHOTO_SIZES = Object.freeze({
-    '3k': 3072,
-    'k': 2048,
-    'h': 1600,
-    'b': 1024
-});
-
 export default class PhotographyPage extends Component {
 
     constructor(props) {
@@ -63,22 +55,29 @@ export default class PhotographyPage extends Component {
         });
     }
 
+    /**
+     * Retrieves a URL for the provided photo object. Chooses lower resolutions for smaller screens, but prioritizes
+     * image quality and the aesthetic benefits of anti-aliasing.
+     * See Flickr documentation to understand image size names: https://www.flickr.com/services/api/misc.urls.html.
+     * Note that the URL for a given image size won't be returned by Flickr when the photo's max resolution is well below that image size.
+     */
     getPhotoUrl(photo) {
-        let screenSize = Math.max(window.screen.availWidth, window.screen.availHeight);
-        // Note that the Flickr URL for a given image size won't be returned when a photo's max resolution is well below that image size.
-        // So we can't choose the same size for every photo.
-        if (screenSize > PHOTO_SIZES['3k'] && photo.url_4k) {
-            return photo.url_4k;
-        } else if (screenSize > PHOTO_SIZES['k'] && photo.url_3k) {
-            return photo.url_3k;
-        } else if (screenSize > PHOTO_SIZES['h'] && photo.url_k) {
-            return photo.url_k;
-        } else if (screenSize > PHOTO_SIZES['b'] && photo.url_h) {
-            return photo.url_h;
+        // the secret value included in photo object works only for size 'b' and below
+        let legacyUrl = `https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_b.jpg`;
+
+        if (this.isHighDefMonitor()) {
+            return this.firstPopulatedUrl([photo.url_4k, photo.url_3k, photo.url_k, photo.url_h, legacyUrl]);
         } else {
-            // legacy url format - works only for size 'b' and below
-            return `https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_b.jpg`;
+            return this.firstPopulatedUrl([photo.url_k, photo.url_h, legacyUrl]);
         }
+    }
+
+    isHighDefMonitor() {
+        return window.screen.width >= 1920;
+    }
+
+    firstPopulatedUrl(urls) {
+        return urls.find(url => url?.length > 0);
     }
 
     render() {
