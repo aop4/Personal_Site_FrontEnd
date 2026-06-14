@@ -7,6 +7,14 @@ import PhotoAlbum from './PhotoAlbum';
 import './photography-page.scss';
 import { Trans } from 'react-i18next';
 
+// Flickr image size documentation: https://www.flickr.com/services/api/misc.urls.html
+const PHOTO_SIZES = Object.freeze({
+    '3k': 3072,
+    'k': 2048,
+    'h': 1600,
+    'b': 1024
+});
+
 export default class PhotographyPage extends Component {
 
     constructor(props) {
@@ -43,23 +51,34 @@ export default class PhotographyPage extends Component {
         });
     }
 
-    /**
-     * Pre-compute URLs for photos on Flickr. (Flickr API responses do not contain
-     * full URLs).
-     */
     setPhotoUrls() {
         let albums = this.state.albums;
         albums.forEach((album) => {
             album.photo.forEach((photo) => {
-                // URL structure and image size details: https://www.flickr.com/services/api/misc.urls.html
-                let url = `http://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_b.jpg`;
-                photo.url = url;
+                photo.url = this.getPhotoUrl(photo);
             });
         })
         this.setState({
-            albums: albums,
-            showLightbox: false
+            albums: albums
         });
+    }
+
+    getPhotoUrl(photo) {
+        let screenSize = Math.max(window.screen.availWidth, window.screen.availHeight);
+        // Note that the Flickr URL for a given image size won't be returned when a photo's max resolution is well below that image size.
+        // So we can't choose the same size for every photo.
+        if (screenSize > PHOTO_SIZES['3k'] && photo.url_4k) {
+            return photo.url_4k;
+        } else if (screenSize > PHOTO_SIZES['k'] && photo.url_3k) {
+            return photo.url_3k;
+        } else if (screenSize > PHOTO_SIZES['h'] && photo.url_k) {
+            return photo.url_k;
+        } else if (screenSize > PHOTO_SIZES['b'] && photo.url_h) {
+            return photo.url_h;
+        } else {
+            // legacy url format - works only for size 'b' and below
+            return `https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_b.jpg`;
+        }
     }
 
     render() {
