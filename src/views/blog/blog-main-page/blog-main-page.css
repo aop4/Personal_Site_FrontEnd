@@ -46,7 +46,19 @@
 
 .post-title {
   margin-top: 0px;
-  font-size: 1.6em;
+}
+
+@media only screen {
+  @media (width < 460px) {
+    .post-title {
+      font-size: 1.2em;
+    }
+  }
+  @media (width >= 460px) {
+    .post-title {
+      font-size: 1.6em;
+    }
+  }
 }
 
 .post-date {
